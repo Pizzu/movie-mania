@@ -1,18 +1,31 @@
-import { type AppType } from "next/app";
+import type { NextPage } from "next";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
-
+import type { AppProps } from "next/app";
+import type { ReactElement, ReactNode } from "react";
+import "~/styles/globals.css";
 import { api } from "~/utils/api";
 
-import "~/styles/globals.css";
+// eslint-disable-next-line @typescript-eslint/ban-types
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  additionalInfo?: {
+    getLayout?: (page: ReactElement) => ReactNode;
+    requiresAuth?: boolean;
+  };
+};
 
-const MyApp: AppType<{ session: Session | null }> = ({
+type AppPropsWithLayout = AppProps<{ session: Session | null }> & {
+  Component: NextPageWithLayout;
+};
+
+const MyApp = ({
   Component,
   pageProps: { session, ...pageProps },
-}) => {
+}: AppPropsWithLayout) => {
+  const getLayout = Component.additionalInfo?.getLayout ?? ((page) => page);
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      {getLayout(<Component {...pageProps} />)}
     </SessionProvider>
   );
 };
