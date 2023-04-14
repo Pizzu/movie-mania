@@ -8,4 +8,8 @@
   html {
     @apply bg-primaryBg;
   }
+
+  body {
+    @apply scrollbar-thin scrollbar-track-primaryBg scrollbar-thumb-secondaryBg;
+  }
 }
