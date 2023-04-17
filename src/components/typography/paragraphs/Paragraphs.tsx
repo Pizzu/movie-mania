@@ -34,7 +34,7 @@ const Large: React.FC<IParagraphText> = ({ className, children }) => {
 
 const Small: React.FC<IParagraphText> = ({ className, children }) => {
   return (
-    <p className={cn("text-sm font-medium leading-none", className)}>
+    <p className={cn("text-sm font-medium leading-none text-white", className)}>
       {children}
     </p>
   );

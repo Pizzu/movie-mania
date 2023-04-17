@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { SidebarLayout } from "~/components/layout";
-import { Heading2, Heading4 } from "~/components/typography";
+import { Heading4 } from "~/components/typography";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -25,10 +25,6 @@ const Home: NextPageWithLayout = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <>
-        <section className="mt-6 text-center">
-          <Heading2>Choose a movie</Heading2>
-        </section>
-
         <section className="mt-6">
           <Heading4 className="mb-5">Now Playing</Heading4>
           <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 md:grid-cols-6">
@@ -97,6 +93,10 @@ const Home: NextPageWithLayout = () => {
 export default Home;
 
 Home.additionalInfo = {
-  getLayout: (page) => <SidebarLayout>{page}</SidebarLayout>,
+  getLayout: (page) => (
+    <SidebarLayout pageTitle="Choose a movie" backBtn={true}>
+      {page}
+    </SidebarLayout>
+  ),
   requiresAuth: false,
 };
