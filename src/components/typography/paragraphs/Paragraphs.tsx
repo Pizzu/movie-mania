@@ -32,6 +32,16 @@ const Large: React.FC<IParagraphText> = ({ className, children }) => {
   );
 };
 
+const Medium: React.FC<IParagraphText> = ({ className, children }) => {
+  return (
+    <p
+      className={cn("text-base font-normal leading-none text-white", className)}
+    >
+      {children}
+    </p>
+  );
+};
+
 const Small: React.FC<IParagraphText> = ({ className, children }) => {
   return (
     <p className={cn("text-sm font-medium leading-none text-white", className)}>
@@ -44,4 +54,4 @@ const Subtle: React.FC<IParagraphText> = ({ className, children }) => {
   return <p className={cn("text-sm text-slate-500", className)}>{children}</p>;
 };
 
-export { Paragraph, Lead, Large, Small, Subtle };
+export { Paragraph, Lead, Large, Small, Subtle, Medium };

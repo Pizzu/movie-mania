@@ -14,4 +14,6 @@ export { Button } from "./button/Button";
 export { default as Container } from "./container/Container";
 export { default as Navbar } from "./navbar/Navbar";
 export { default as Sidebar } from "./sidebar/Sidebar";
+export { default as SidebarLink } from "./sidebar/link/SidebarLink";
 export { default as Spinner } from "./spinner/Spinner";
+export { default as SvgHandler } from "./svg/SvgHandler";

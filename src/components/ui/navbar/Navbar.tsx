@@ -1,4 +1,5 @@
 import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 import { Heading2 } from "~/components/typography";
 import {
   AlertDialog,
@@ -12,6 +13,7 @@ import {
   Avatar,
   Button,
   Spinner,
+  SvgHandler,
 } from "~/components/ui";
 
 interface INavbar {
@@ -21,6 +23,7 @@ interface INavbar {
 
 const Navbar: React.FC<INavbar> = ({ title, backBtn = false }) => {
   const { data: sessionData, status } = useSession();
+  const router = useRouter();
   console.log(status);
   console.log(sessionData);
   return (
@@ -30,7 +33,14 @@ const Navbar: React.FC<INavbar> = ({ title, backBtn = false }) => {
           title || backBtn ? "justify-between" : "justify-end"
         } py-10`}
       >
-        {backBtn && <div>Back Btn</div>}
+        {backBtn && (
+          <Button
+            onClick={() => router.back()}
+            className="h-12 w-12 bg-secondaryBg"
+          >
+            <SvgHandler icon="backArrowIcon" isHighlighted={true} />
+          </Button>
+        )}
         {title && <Heading2>{title}</Heading2>}
 
         {status === "loading" ? (

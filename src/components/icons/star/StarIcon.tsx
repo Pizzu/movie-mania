@@ -12,7 +12,7 @@ const StarIcon: React.FC<ISvgIcon> = ({
         width={`${width}rem`}
         height={`${height}rem`}
         className={`${
-          isHighlighted ? "stroke-white" : "stroke-neutral-400"
+          isHighlighted ? "stroke-white" : "stroke-secondary"
         } transition-all`}
         viewBox="0 0 22 22"
         fill="none"

@@ -12,7 +12,7 @@ const SignoutIcon: React.FC<ISvgIcon> = ({
         width={`${width}rem`}
         height={`${height}rem`}
         className={`${
-          isHighlighted ? "stroke-white" : "stroke-neutral-400"
+          isHighlighted ? "stroke-white" : "stroke-secondary"
         } transition-all`}
         viewBox="0 0 22 22"
         fill="none"
@@ -24,16 +24,8 @@ const SignoutIcon: React.FC<ISvgIcon> = ({
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-        <path
-          d="M9 6L4 11L9 16"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M17 11H4"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
+        <path d="M9 6L4 11L9 16" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M17 11H4" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     </>
   );

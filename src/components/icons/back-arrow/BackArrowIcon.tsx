@@ -12,7 +12,7 @@ const BackArrowIcon: React.FC<ISvgIcon> = ({
         width={`${width}rem`}
         height={`${height}rem`}
         className={`${
-          isHighlighted ? "stroke-white" : "stroke-neutral-400"
+          isHighlighted ? "stroke-white" : "stroke-secondary"
         } fill-none transition-all`}
         viewBox="0 0 20 22"
         xmlns="http://www.w3.org/2000/svg"

@@ -12,7 +12,7 @@ const TicketIcon: React.FC<ISvgIcon> = ({
         width={`${width}rem`}
         height={`${height}rem`}
         className={`${
-          isHighlighted ? "fill-white" : "fill-neutral-400"
+          isHighlighted ? "fill-white" : "fill-secondary"
         } transition-all`}
         viewBox="0 0 20 16"
         fill="none"
