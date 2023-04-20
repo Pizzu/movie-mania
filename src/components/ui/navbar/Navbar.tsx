@@ -58,20 +58,38 @@ const Navbar: React.FC<INavbar> = ({ title, backBtn = false }) => {
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
-                <AlertDialogTitle>Sign in with a provider</AlertDialogTitle>
+                <AlertDialogTitle className="mb-5">
+                  Sign in with a provider
+                </AlertDialogTitle>
                 <AlertDialogDescription asChild>
-                  <div className="flex flex-col gap-2">
-                    <Button onClick={() => void signIn("google")}>
+                  <div className="flex flex-col gap-4">
+                    <Button
+                      className="gap-3 bg-white px-8 py-4 text-black"
+                      onClick={() => void signIn("google")}
+                    >
+                      <SvgHandler
+                        icon={"googleIcon"}
+                        width={"1.5"}
+                        height={"1.5"}
+                      />
                       Sign in with google
                     </Button>
-                    <Button onClick={() => void signIn("discord")}>
+                    <Button
+                      className="gap-3 bg-discord px-8 py-4"
+                      onClick={() => void signIn("discord")}
+                    >
+                      <SvgHandler
+                        icon={"discordIcon"}
+                        width={"1.5"}
+                        height={"1.5"}
+                      />
                       Sign in with Discord
                     </Button>
                   </div>
                 </AlertDialogDescription>
               </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel className="border-none bg-red-500 text-white outline-none focus:outline-none">
+              <AlertDialogFooter className="mt-4">
+                <AlertDialogCancel className="border-none bg-red-500 text-white outline-none focus:outline-none hover:bg-red-600">
                   Cancel
                 </AlertDialogCancel>
               </AlertDialogFooter>
