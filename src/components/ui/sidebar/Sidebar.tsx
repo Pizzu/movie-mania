@@ -1,6 +1,9 @@
+import { signOut, useSession } from "next-auth/react";
 import { Heading, Small } from "~/components/typography";
-import { SidebarLink, SvgHandler } from "~/components/ui";
+import { Button, SidebarLink, SvgHandler } from "~/components/ui";
 const Sidebar: React.FC = () => {
+  const { status } = useSession();
+
   return (
     <div className="fixed left-0 top-0 hidden h-screen w-80 rounded-br-3xl bg-secondaryBg px-8 py-10 sm:hidden md:block">
       <div className="flex h-full flex-col">
@@ -48,22 +51,32 @@ const Sidebar: React.FC = () => {
               width="1.5"
               height="1.5"
             />
-            <SidebarLink
-              href="/tickets"
-              title="My Tickets"
-              icon="ticketIcon"
-              width="1.5"
-              height="1.5"
-            />
+            {status === "authenticated" && (
+              <SidebarLink
+                href="/tickets"
+                title="My Tickets"
+                icon="ticketIcon"
+                width="1.5"
+                height="1.5"
+              />
+            )}
           </div>
         </div>
-        <SidebarLink
-          href="/logout"
-          title="Sign out"
-          icon="signoutIcon"
-          width="1.5"
-          height="1.5"
-        />
+        {status === "authenticated" && (
+          <Button
+            onClick={() => void signOut()}
+            variant={"destructive"}
+            className="justify-start gap-3 px-8 py-4 text-base font-normal"
+          >
+            <SvgHandler
+              icon={"signoutIcon"}
+              width={"1.5"}
+              height={"1.5"}
+              isHighlighted={true}
+            />
+            Sign out
+          </Button>
+        )}
       </div>
     </div>
   );

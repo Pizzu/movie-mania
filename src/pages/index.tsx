@@ -100,7 +100,7 @@ export default Home;
 
 Home.additionalInfo = {
   getLayout: (page) => (
-    <SidebarLayout pageTitle="Choose a movie" backBtn={true}>
+    <SidebarLayout pageTitle="Choose a movie" backBtn={false}>
       {page}
     </SidebarLayout>
   ),
