@@ -1,4 +1,4 @@
-import { Heading3, Small } from "~/components/typography";
+import { Heading, Small } from "~/components/typography";
 import { SidebarLink, SvgHandler } from "~/components/ui";
 const Sidebar: React.FC = () => {
   return (
@@ -12,7 +12,9 @@ const Sidebar: React.FC = () => {
               height="2"
               isHighlighted={true}
             />
-            <Heading3>MovieMania</Heading3>
+            <Heading tag="h3" variant={"h3"}>
+              MovieMania
+            </Heading>
           </div>
         </div>
         <div className="mt-11 h-full">

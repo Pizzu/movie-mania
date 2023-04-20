@@ -1,6 +1,6 @@
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { Heading2 } from "~/components/typography";
+import { Heading } from "~/components/typography";
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -41,7 +41,11 @@ const Navbar: React.FC<INavbar> = ({ title, backBtn = false }) => {
             <SvgHandler icon="backArrowIcon" isHighlighted={true} />
           </Button>
         )}
-        {title && <Heading2>{title}</Heading2>}
+        {title && (
+          <Heading tag="h1" variant={"h2"}>
+            {title}
+          </Heading>
+        )}
 
         {status === "loading" ? (
           <Spinner />

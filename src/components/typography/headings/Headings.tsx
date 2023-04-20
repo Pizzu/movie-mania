@@ -1,60 +1,36 @@
+import { cva, type VariantProps } from "class-variance-authority";
+import React from "react";
 import { cn } from "~/lib/utils";
-
-interface IHeadingText {
-  children: React.ReactNode;
-  className?: string;
+export interface IHeading
+  extends React.HTMLAttributes<HTMLHeadingElement>,
+    VariantProps<typeof headingVariants> {
+  tag: "h1" | "h2" | "h3" | "h4";
 }
 
-const Heading1: React.FC<IHeadingText> = ({ className, children }) => {
-  return (
-    <h1
-      className={cn(
-        "text-4xl font-extrabold tracking-tight text-white lg:text-5xl",
-        className
-      )}
-    >
-      {children}
-    </h1>
-  );
-};
+const headingVariants = cva("tracking-tight text-white font-bold", {
+  variants: {
+    variant: {
+      h1: "text-4xl lg:text-5xl",
+      h2: "text-3xl",
+      h3: "text-2xl",
+      h4: "text-xl",
+    },
+  },
+  defaultVariants: {
+    variant: "h1",
+  },
+});
 
-const Heading2: React.FC<IHeadingText> = ({ className, children }) => {
-  return (
-    <h2
-      className={cn(
-        "text-3xl font-semibold tracking-tight text-white",
-        className
-      )}
-    >
-      {children}
-    </h2>
-  );
-};
+const Heading = React.forwardRef<HTMLHeadingElement, IHeading>(
+  ({ tag, className, variant, children, ...props }, ref) => {
+    return React.createElement(
+      tag,
+      { className: cn(headingVariants({ variant, className })), ref, ...props },
+      children
+    );
+  }
+);
 
-const Heading3: React.FC<IHeadingText> = ({ className, children }) => {
-  return (
-    <h3
-      className={cn(
-        "text-2xl font-semibold tracking-tight text-white",
-        className
-      )}
-    >
-      {children}
-    </h3>
-  );
-};
+Heading.displayName = "Heading";
 
-const Heading4: React.FC<IHeadingText> = ({ className, children }) => {
-  return (
-    <h4
-      className={cn(
-        "text-xl font-semibold tracking-tight text-white",
-        className
-      )}
-    >
-      {children}
-    </h4>
-  );
-};
-
-export { Heading1, Heading2, Heading3, Heading4 };
+export { Heading };

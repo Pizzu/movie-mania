@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { SidebarLayout } from "~/components/layout";
-import { Heading4 } from "~/components/typography";
+import { Heading } from "~/components/typography";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -26,7 +26,9 @@ const Home: NextPageWithLayout = () => {
       </Head>
       <>
         <section className="mt-6">
-          <Heading4 className="mb-5">Now Playing</Heading4>
+          <Heading tag="h2" variant={"h4"} className="mb-5">
+            Now Playing
+          </Heading>
           <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 md:grid-cols-6">
             <div className="h-48 w-full rounded-3xl bg-teal-300"></div>
             <div className="h-48 w-full rounded-3xl bg-teal-300"></div>
@@ -38,7 +40,9 @@ const Home: NextPageWithLayout = () => {
         </section>
 
         <section className="mt-6">
-          <Heading4 className="mb-5">Coming Soon</Heading4>
+          <Heading tag="h2" variant={"h4"} className="mb-5">
+            Coming Soon
+          </Heading>
           <div className="grid grid-cols-6 gap-7">
             <div className="h-48 w-full rounded-3xl bg-orange-300"></div>
             <div className="h-48 w-full rounded-3xl bg-orange-300"></div>
@@ -50,7 +54,9 @@ const Home: NextPageWithLayout = () => {
         </section>
 
         <section className="mt-6">
-          <Heading4 className="mb-5">Top Movies</Heading4>
+          <Heading tag="h2" variant={"h4"} className="mb-5">
+            Top Movies
+          </Heading>
           <div className="grid grid-cols-6 gap-7">
             <div className="h-48 w-full rounded-3xl bg-green-300"></div>
             <div className="h-48 w-full rounded-3xl bg-green-300"></div>
