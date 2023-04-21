@@ -11,12 +11,6 @@ generator client {
     provider = "prisma-client-js"
 }
 
-model Example {
-    id        String   @id @default(cuid())
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-}
-
 // Necessary for Next auth
 model Account {
     id                String  @id @default(cuid())
@@ -48,13 +42,15 @@ model Session {
 }
 
 model User {
-    id            String    @id @default(cuid())
+    id            String        @id @default(cuid())
     name          String?
-    email         String?   @unique
+    email         String?       @unique
     emailVerified DateTime?
     image         String?
     accounts      Account[]
     sessions      Session[]
+    Ticket        Ticket[]
+    TicketOrder   TicketOrder[]
 }
 
 model VerificationToken {
@@ -63,4 +59,67 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+model Movie {
+    id          Int      @id @default(autoincrement())
+    title       String
+    plot        String
+    director    String
+    duration    String
+    releaseDate DateTime @db.Date
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    Show        Show[]
+}
+
+model Room {
+    id        Int      @id @default(autoincrement())
+    name      String
+    capacity  Int
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    Show      Show[]
+}
+
+model Show {
+    id        Int      @id @default(autoincrement())
+    movieId   Int
+    roomId    Int
+    showTime  DateTime
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    movie     Movie    @relation(fields: [movieId], references: [id])
+    room      Room     @relation(fields: [roomId], references: [id])
+    tickets   Ticket[]
+
+    @@index([movieId])
+    @@index([roomId])
+}
+
+model Ticket {
+    id            Int          @id @default(autoincrement())
+    userId        String?
+    showId        Int
+    ticketOrderId Int?
+    createdAt     DateTime     @default(now())
+    updatedAt     DateTime     @updatedAt
+    user          User?        @relation(fields: [userId], references: [id])
+    show          Show         @relation(fields: [showId], references: [id])
+    TicketOrder   TicketOrder? @relation(fields: [ticketOrderId], references: [id], onDelete: Cascade)
+
+    @@index([showId])
+    @@index([ticketOrderId])
+    @@index([userId])
+}
+
+model TicketOrder {
+    id        Int      @id @default(autoincrement())
+    totalCost Int
+    userId    String
+    ticketId  Int
+    user      User     @relation(fields: [userId], references: [id])
+    tickets   Ticket[]
+
+    @@index([userId])
 }

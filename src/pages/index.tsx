@@ -15,8 +15,6 @@ import {
 import { type NextPageWithLayout } from "./_app";
 
 const Home: NextPageWithLayout = () => {
-  // const hello = api.example.hello.useQuery({ text: "from tRPC" });
-
   return (
     <>
       <Head>
