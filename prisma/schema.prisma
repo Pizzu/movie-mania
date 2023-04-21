@@ -65,6 +65,7 @@ model Movie {
     id          Int      @id @default(autoincrement())
     title       String
     plot        String
+    category    String
     director    String
     duration    String
     releaseDate DateTime @db.Date
