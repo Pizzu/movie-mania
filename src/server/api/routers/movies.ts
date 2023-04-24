@@ -12,14 +12,17 @@ export const moviesRouter = createTRPCRouter({
     }
   }),
   getAllByCategory: publicProcedure
-    .input(z.object({ categoryName: z.string() }))
-    .query(async ({ ctx, input: { categoryName } }) => {
+    .input(
+      z.object({ categoryName: z.string(), limit: z.number().int().optional() })
+    )
+    .query(async ({ ctx, input: { categoryName, limit } }) => {
       try {
         const movies = await ctx.prisma.movie.findMany({
           where: { category: categoryName },
+          take: limit,
         });
 
-        return { [categoryName]: movies };
+        return { movies };
       } catch (error) {
         throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
       }

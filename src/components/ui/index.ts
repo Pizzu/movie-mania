@@ -12,8 +12,12 @@ export {
 export { default as Avatar } from "./avatar/Avatar";
 export { Button } from "./button/Button";
 export { default as Container } from "./container/Container";
+export { default as MovieCard } from "./movie/card/MovieCard";
+export { default as MovieList } from "./movie/list/MovieList";
+export { default as MovieCategorySection } from "./movie/section/MovieCategorySection";
 export { default as Navbar } from "./navbar/Navbar";
 export { default as Sidebar } from "./sidebar/Sidebar";
 export { default as SidebarLink } from "./sidebar/link/SidebarLink";
+export { default as Skeleton } from "./skeleton/Skeleton";
 export { default as Spinner } from "./spinner/Spinner";
 export { default as SvgHandler } from "./svg/SvgHandler";

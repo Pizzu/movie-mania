@@ -68,6 +68,7 @@ model Movie {
     category    String
     director    String
     duration    String
+    mainImage   String
     releaseDate DateTime @db.Date
     createdAt   DateTime @default(now())
     updatedAt   DateTime @updatedAt
@@ -102,6 +103,8 @@ model Ticket {
     id            Int          @id @default(autoincrement())
     userId        String?
     showId        Int
+    seatNumber    String
+    isAvailable   Boolean
     ticketOrderId Int?
     createdAt     DateTime     @default(now())
     updatedAt     DateTime     @updatedAt
