@@ -6,7 +6,7 @@ import { api } from "~/utils/api";
 interface IMovieSection extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
   category: string;
-  limit: number;
+  limit?: number;
 }
 
 const MovieCategorySection = ({

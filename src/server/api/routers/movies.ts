@@ -50,9 +50,12 @@ export const moviesRouter = createTRPCRouter({
   getByName: publicProcedure
     .input(z.object({ movieName: z.string() }))
     .query(async ({ ctx, input: { movieName } }) => {
+      const title = movieName.replace(/-/g, " ");
+      const capitalizedTitle = title.charAt(0).toUpperCase() + title.slice(1);
+
       try {
         const movies = await ctx.prisma.movie.findMany({
-          where: { title: movieName },
+          where: { title: capitalizedTitle },
         });
 
         if (!movies || !(movies.length > 0)) {
