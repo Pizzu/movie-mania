@@ -1,16 +1,20 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { SidebarLayout } from "~/components/layout";
-import { Heading, Paragraph } from "~/components/typography";
+import { Heading } from "~/components/typography";
+import { MovieHero, ShowSelectionForm } from "~/components/ui";
 import { api } from "~/utils/api";
 import { type NextPageWithLayout } from "../_app";
 
 const SingleMoviePage: NextPageWithLayout = () => {
   const router = useRouter();
   const { slug } = router.query;
-  const { isLoading, data } = api.movies.getByName.useQuery({
-    movieName: slug as string,
-  });
+  const { isLoading, data } = api.movies.getByName.useQuery(
+    {
+      movieName: slug as string,
+    },
+    { enabled: slug !== undefined }
+  );
 
   console.log(data);
 
@@ -22,10 +26,21 @@ const SingleMoviePage: NextPageWithLayout = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <>
-        <Heading tag="h1" variant={"h1"}>
-          Single Movie Page
-        </Heading>
-        <Paragraph>{data?.movie?.title}</Paragraph>
+        <div className="flex flex-col">
+          <MovieHero
+            movie={data ? data.movie : undefined}
+            isLoading={isLoading}
+          />
+          <section className="h-[26rem]"></section>
+          <section className="text-white">
+            <div className="mb-8 text-center">
+              <Heading tag={"h2"} variant={"h3"}>
+                Select a Show
+              </Heading>
+            </div>
+          </section>
+          <ShowSelectionForm />
+        </div>
       </>
     </>
   );

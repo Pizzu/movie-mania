@@ -12,7 +12,10 @@ export {
 export { default as Avatar } from "./avatar/Avatar";
 export { Button } from "./button/Button";
 export { default as Container } from "./container/Container";
+export { default as RadioShowCard } from "./form/radio-card/RadioShowCard";
+export { default as ShowSelectionForm } from "./form/show-selection/ShowSelectionForm";
 export { default as MovieCard } from "./movie/card/MovieCard";
+export { default as MovieHero } from "./movie/hero/MovieHero";
 export { default as MovieList } from "./movie/list/MovieList";
 export { default as MovieCategorySection } from "./movie/section/MovieCategorySection";
 export { default as Navbar } from "./navbar/Navbar";

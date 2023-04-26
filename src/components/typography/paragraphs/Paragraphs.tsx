@@ -7,7 +7,7 @@ interface IParagraphText {
 
 const Paragraph: React.FC<IParagraphText> = ({ className, children }) => {
   return (
-    <p className={cn("text-xl font-normal text-white", className)}>
+    <p className={cn("text-lg font-normal text-white", className)}>
       {children}
     </p>
   );
