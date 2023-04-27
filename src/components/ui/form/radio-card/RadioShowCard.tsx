@@ -9,10 +9,10 @@ export interface IHeading extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const RadioShowCard = React.forwardRef<HTMLInputElement, IHeading>(
-  ({ id, value, required, className, keyInput, ...props }) => {
+  ({ id, value, required, className, keyInput, ...props }, ref) => {
     const { register } = useFormContext();
     return (
-      <div>
+      <div ref={ref}>
         <input
           type="radio"
           id={id}

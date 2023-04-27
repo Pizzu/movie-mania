@@ -1,22 +1,37 @@
+import { createProxySSGHelpers } from "@trpc/react-query/ssg";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import type { GetStaticPaths, GetStaticProps } from "next/types";
+import superjson from "superjson";
 import { SidebarLayout } from "~/components/layout";
 import { Heading } from "~/components/typography";
 import { MovieHero, ShowSelectionForm } from "~/components/ui";
+import { appRouter } from "~/server/api/root";
+import { prisma } from "~/server/db";
 import { api } from "~/utils/api";
+import { handleTRPCErrors } from "~/utils/errors";
 import { type NextPageWithLayout } from "../_app";
 
-const SingleMoviePage: NextPageWithLayout = () => {
+const SingleMoviePage: NextPageWithLayout<{ movieSlug: string }> = ({
+  movieSlug,
+}) => {
   const router = useRouter();
-  const { slug } = router.query;
   const { isLoading, data } = api.movies.getByName.useQuery(
     {
-      movieName: slug as string,
+      movieName: movieSlug,
     },
-    { enabled: slug !== undefined }
+    {
+      onError: (error) => {
+        const { isNotFound } = handleTRPCErrors({
+          message: error.data?.stack,
+          code: error.data?.code,
+        });
+        if (isNotFound) {
+          void router.push("/not-found");
+        }
+      },
+    }
   );
-
-  console.log(data);
 
   return (
     <>
@@ -51,4 +66,37 @@ export default SingleMoviePage;
 SingleMoviePage.additionalInfo = {
   getLayout: (page) => <SidebarLayout backBtn={true}>{page}</SidebarLayout>,
   requiresAuth: false,
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const ssg = createProxySSGHelpers({
+    router: appRouter,
+    ctx: { prisma, session: null },
+    transformer: superjson,
+  });
+
+  const movieSlug = context.params?.slug;
+
+  if (typeof movieSlug !== "string") {
+    return {
+      notFound: true,
+    };
+  }
+
+  await ssg.movies.getByName.prefetch({ movieName: movieSlug });
+
+  return {
+    props: {
+      trpcState: ssg.dehydrate(),
+      movieSlug,
+    },
+    revalidate: 5000,
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = () => {
+  return {
+    paths: [],
+    fallback: "blocking",
+  };
 };

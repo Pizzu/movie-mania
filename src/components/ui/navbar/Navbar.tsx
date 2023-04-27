@@ -24,8 +24,7 @@ interface INavbar {
 const Navbar: React.FC<INavbar> = ({ title, backBtn = false }) => {
   const { data: sessionData, status } = useSession();
   const router = useRouter();
-  console.log(status);
-  console.log(sessionData);
+
   return (
     <div className="relative z-50 mx-auto w-full max-w-screen-2xl pl-12 pr-12">
       <nav

@@ -53,21 +53,23 @@ export const moviesRouter = createTRPCRouter({
       const title = movieName.replace(/-/g, " ");
       const capitalizedTitle = title.charAt(0).toUpperCase() + title.slice(1);
 
-      try {
-        const movies = await ctx.prisma.movie.findMany({
+      const movies = await ctx.prisma.movie
+        .findMany({
           where: { title: capitalizedTitle },
+        })
+        .catch(() => {
+          throw new TRPCError({
+            code: "INTERNAL_SERVER_ERROR",
+            message: "Something went wrong",
+          });
         });
 
-        if (!movies || !(movies.length > 0)) {
-          throw new TRPCError({
-            code: "NOT_FOUND",
-            message: "Movie not found",
-          });
-        }
-
-        return { movie: movies[0] };
-      } catch (error) {
-        throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
+      if (!movies || !(movies.length > 0)) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "Movie not found",
+        });
       }
+      return { movie: movies[0] };
     }),
 });
