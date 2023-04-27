@@ -7,21 +7,14 @@ interface IParagraphText {
 
 const Paragraph: React.FC<IParagraphText> = ({ className, children }) => {
   return (
-    <p
-      className={cn(
-        "scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl",
-        className
-      )}
-    >
+    <p className={cn("text-lg font-normal text-white", className)}>
       {children}
     </p>
   );
 };
 
 const Lead: React.FC<IParagraphText> = ({ className, children }) => {
-  return (
-    <p className={cn("text-xl text-slate-700", className)}>{children}</p>
-  );
+  return <p className={cn("text-xl text-slate-700", className)}>{children}</p>;
 };
 
 const Large: React.FC<IParagraphText> = ({ className, children }) => {

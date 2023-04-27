@@ -31,22 +31,22 @@ const Sidebar: React.FC = () => {
               height="1.5"
             />
             <SidebarLink
-              href="/now-playing"
+              href="/movies/now-playing"
               title="Now Playing"
               icon="playIcon"
               width="1.5"
               height="1.5"
             />
             <SidebarLink
-              href="/upcoming"
+              href="/movies/upcoming"
               title="Upcoming"
               icon="timeIcon"
               width="1.5"
               height="1.5"
             />
             <SidebarLink
-              href="/top-rated"
-              title="Top Rated"
+              href="/movies/top-movies"
+              title="Top Movies"
               icon="starIcon"
               width="1.5"
               height="1.5"
