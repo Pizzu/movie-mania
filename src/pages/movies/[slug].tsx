@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import type { GetStaticPaths, GetStaticProps } from "next/types";
 import superjson from "superjson";
 import { SidebarLayout } from "~/components/layout";
-import { Heading } from "~/components/typography";
 import { MovieHero, ShowSelectionForm } from "~/components/ui";
 import { appRouter } from "~/server/api/root";
 import { prisma } from "~/server/db";
@@ -42,19 +41,10 @@ const SingleMoviePage: NextPageWithLayout<{ movieSlug: string }> = ({
       </Head>
       <>
         <div className="flex flex-col">
-          <MovieHero
-            movie={data ? data.movie : undefined}
-            isLoading={isLoading}
-          />
+          <MovieHero movie={data?.movie} isLoading={isLoading} />
+
           <section className="h-[26rem]"></section>
-          <section className="text-white">
-            <div className="mb-8 text-center">
-              <Heading tag={"h2"} variant={"h3"}>
-                Select a Show
-              </Heading>
-            </div>
-          </section>
-          <ShowSelectionForm />
+          {data && data.movie ? <ShowSelectionForm movie={data.movie} /> : null}
         </div>
       </>
     </>

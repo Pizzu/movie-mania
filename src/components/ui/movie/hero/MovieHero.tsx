@@ -5,7 +5,7 @@ import { type RouterOutputs } from "~/utils/api";
 
 interface IMovieHero {
   isLoading: boolean;
-  movie: RouterOutputs["movies"]["getByName"]["movie"];
+  movie?: RouterOutputs["movies"]["getByName"]["movie"];
 }
 
 const MovieHero = ({ movie, isLoading }: IMovieHero) => {

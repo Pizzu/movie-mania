@@ -3,13 +3,15 @@ import { useFormContext } from "react-hook-form";
 import { Heading, Medium, Small } from "~/components/typography";
 import { SvgHandler } from "~/components/ui";
 import { cn } from "~/lib/utils";
+import { type RouterOutputs } from "~/utils/api";
 
 export interface IHeading extends React.InputHTMLAttributes<HTMLInputElement> {
   keyInput: string;
+  show: RouterOutputs["shows"]["getAllByMovieId"]["shows"][number];
 }
 
 const RadioShowCard = React.forwardRef<HTMLInputElement, IHeading>(
-  ({ id, value, required, className, keyInput, ...props }, ref) => {
+  ({ id, value, required, className, keyInput, show, ...props }, ref) => {
     const { register } = useFormContext();
     return (
       <div ref={ref}>
@@ -31,9 +33,9 @@ const RadioShowCard = React.forwardRef<HTMLInputElement, IHeading>(
         >
           <div>
             <Heading tag={"h3"} variant={"h4"} className="mb-1">
-              Movie Title
+              {show.movie.title}
             </Heading>
-            <Medium className="mb-3">Venus Room</Medium>
+            <Medium className="mb-3">{`${show.room.name} Room`}</Medium>
             <div className="mb-3 flex items-center justify-center gap-3">
               <SvgHandler
                 icon={"calendarIcon"}
@@ -55,7 +57,7 @@ const RadioShowCard = React.forwardRef<HTMLInputElement, IHeading>(
                 isHighlighted={true}
               />
 
-              <Small>Ticket price: $25</Small>
+              <Small>Ticket price: ${`${show.showPrice.toString()}`}</Small>
             </div>
           </div>
         </label>

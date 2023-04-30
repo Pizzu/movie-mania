@@ -64,12 +64,13 @@ export const moviesRouter = createTRPCRouter({
           });
         });
 
-      if (!movies || !(movies.length > 0)) {
+      if (movies && movies.length > 0 && movies[0]) {
+        return { movie: movies[0] };
+      } else {
         throw new TRPCError({
           code: "NOT_FOUND",
           message: "Movie not found",
         });
       }
-      return { movie: movies[0] };
     }),
 });
