@@ -14,7 +14,7 @@ const ShowSelectionForm = ({ movie }: IShowSlectionForm) => {
   const { status } = useSession();
   const router = useRouter();
   const methods = useForm<{
-    content: string;
+    showId: string;
   }>();
 
   const { data, isLoading } = api.shows.getAllByMovieId.useQuery(
@@ -26,9 +26,9 @@ const ShowSelectionForm = ({ movie }: IShowSlectionForm) => {
 
   const showAvailable = data && data.shows && data.shows.length > 1;
 
-  const onSubmit: SubmitHandler<{ content: string }> = ({ content }) => {
-    if (content) {
-      void router.push(`/shows/${content}/reservation`);
+  const onSubmit: SubmitHandler<{ showId: string }> = ({ showId }) => {
+    if (showId) {
+      void router.push(`/shows/${showId}/reservation`);
     }
   };
 
@@ -77,7 +77,7 @@ const ShowSelectionForm = ({ movie }: IShowSlectionForm) => {
                         id={show.id.toString()}
                         value={show.id}
                         required={true}
-                        keyInput={"content"}
+                        keyInput={"showId"}
                       />
                     );
                   })}

@@ -4,6 +4,7 @@ import { SessionProvider } from "next-auth/react";
 import type { AppProps } from "next/app";
 import type { ReactElement, ReactNode } from "react";
 import { Toaster } from "react-hot-toast";
+import { Auth } from "~/components/layout";
 import "~/styles/globals.css";
 import { api } from "~/utils/api";
 
@@ -24,10 +25,17 @@ const MyApp = ({
   pageProps: { session, ...pageProps },
 }: AppPropsWithLayout) => {
   const getLayout = Component.additionalInfo?.getLayout ?? ((page) => page);
+  const requiresAuth = Component.additionalInfo?.requiresAuth ? true : false;
   return (
     <SessionProvider session={session}>
       <Toaster position="top-center" />
-      {getLayout(<Component {...pageProps} />)}
+      {requiresAuth === true ? (
+        <Auth>
+          {getLayout(<Component {...pageProps} />)}
+        </Auth>
+      ) : (
+        getLayout(<Component {...pageProps} />)
+      )}
     </SessionProvider>
   );
 };
