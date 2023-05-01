@@ -29,6 +29,7 @@ export default {
         secondary: "#817E91",
         secondaryBg: "#231F37",
         discord: "#5865F2",
+        accent: "#34DCBF",
       },
     },
   },

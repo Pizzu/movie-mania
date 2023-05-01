@@ -7,6 +7,7 @@ export { default as HomeIcon } from "./home/HomeIcon";
 export { default as LogoIcon } from "./logo/LogoIcon";
 export { default as PlayIcon } from "./play/PlayIcon";
 export { default as SearchIcon } from "./search/SearchIcon";
+export { default as SeatIcon } from "./seat/SeatIcon";
 export { default as Signout } from "./signout/SignoutIcon";
 export { default as StarIcon } from "./star/StarIcon";
 export { default as TicketIcon } from "./ticket/TicketIcon";

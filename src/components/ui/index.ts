@@ -19,6 +19,7 @@ export { default as MovieHero } from "./movie/hero/MovieHero";
 export { default as MovieList } from "./movie/list/MovieList";
 export { default as MovieCategorySection } from "./movie/section/MovieCategorySection";
 export { default as Navbar } from "./navbar/Navbar";
+export { default as Screen } from "./screen/Screen";
 export { default as Sidebar } from "./sidebar/Sidebar";
 export { default as SidebarLink } from "./sidebar/link/SidebarLink";
 export { default as Skeleton } from "./skeleton/Skeleton";

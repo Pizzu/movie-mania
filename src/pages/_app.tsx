@@ -28,11 +28,18 @@ const MyApp = ({
   const requiresAuth = Component.additionalInfo?.requiresAuth ? true : false;
   return (
     <SessionProvider session={session}>
-      <Toaster position="top-center" />
+      <Toaster
+        toastOptions={{
+          style: {
+            borderRadius: "0.5rem",
+            background: "#231F37",
+            color: "#fff",
+          },
+        }}
+        position="top-center"
+      />
       {requiresAuth === true ? (
-        <Auth>
-          {getLayout(<Component {...pageProps} />)}
-        </Auth>
+        <Auth>{getLayout(<Component {...pageProps} />)}</Auth>
       ) : (
         getLayout(<Component {...pageProps} />)
       )}

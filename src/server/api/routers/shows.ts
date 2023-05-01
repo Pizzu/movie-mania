@@ -25,4 +25,29 @@ export const showsRouter = createTRPCRouter({
         throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
       }
     }),
+  getOneById: publicProcedure
+    .input(z.object({ showId: z.string() }))
+    .query(async ({ ctx, input: { showId } }) => {
+      console.log(showId);
+      const show = await ctx.prisma.show
+        .findUnique({
+          where: { id: showId },
+          include: { tickets: true },
+        })
+        .catch(() => {
+          throw new TRPCError({
+            code: "INTERNAL_SERVER_ERROR",
+            message: "Something went wrong",
+          });
+        });
+
+      if (!show) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "Movie not found",
+        });
+      }
+
+      return { show };
+    }),
 });
