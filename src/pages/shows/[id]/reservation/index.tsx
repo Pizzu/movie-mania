@@ -4,19 +4,12 @@ import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import { SeatIcon } from "~/components/icons";
 import { SidebarLayout } from "~/components/layout";
-import { Small } from "~/components/typography";
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
   Button,
+  CheckBoxSeat,
+  PaymentAlert,
+  ReservationLegend,
   Screen,
   Skeleton,
 } from "~/components/ui";
@@ -93,6 +86,16 @@ const ReservationPage: NextPageWithLayout = ({}) => {
     }
   };
 
+  const onAlertSuccess = () => {
+    console.log("Payment");
+    setShowAlert(false);
+  };
+
+  const onAlertCancel = () => {
+    console.log("Cancel");
+    setShowAlert(false);
+  };
+
   return (
     <>
       <Head>
@@ -104,7 +107,7 @@ const ReservationPage: NextPageWithLayout = ({}) => {
         <div className="mt-6">
           <Screen />
         </div>
-        {isLoading ? (
+        {isLoading || !data ? (
           <>
             <div className="mx-auto flex max-w-3xl flex-col items-center">
               <Skeleton className="mb-14 mt-14 h-48 w-full bg-secondaryBg" />
@@ -123,37 +126,13 @@ const ReservationPage: NextPageWithLayout = ({}) => {
                 <div className="mx-auto my-14 grid max-w-3xl grid-cols-6 gap-3 sm:grid-cols-6 md:grid-cols-6">
                   {allTickets &&
                     allTickets.map((ticket, index) => (
-                      <div key={index}>
-                        <input
-                          id={`seat-${ticket.id}`}
-                          value={ticket.id}
-                          type="checkbox"
-                          className="peer hidden"
-                          defaultChecked={!ticket.isAvailable}
-                          disabled={!ticket.isAvailable}
-                          {...methods.register("seats", { onChange: onChange })}
-                        />
-                        <label
-                          htmlFor={`seat-${ticket.id}`}
-                          className={`inline-flex h-auto cursor-pointer items-center justify-between rounded-full p-2 `}
-                        >
-                          <SeatIcon
-                            width="3"
-                            height="3"
-                            className={`${
-                              ticket.isAvailable
-                                ? selectedTickets &&
-                                  selectedTickets.find(
-                                    (ticketSelected) =>
-                                      ticketSelected.id === ticket.id
-                                  )
-                                  ? "fill-accent"
-                                  : "fill-white"
-                                : "fill-red-500"
-                            }`}
-                          />
-                        </label>
-                      </div>
+                      <CheckBoxSeat
+                        key={index}
+                        keyInput={"seats"}
+                        ticket={ticket}
+                        selectedTickets={selectedTickets}
+                        onChange={onChange}
+                      />
                     ))}
                 </div>
                 <div className="flex justify-center">
@@ -161,45 +140,19 @@ const ReservationPage: NextPageWithLayout = ({}) => {
                 </div>
               </form>
             </FormProvider>
-            <div className="mt-14 flex justify-center">
-              <div className="flex gap-5">
-                <div className="flex items-center gap-2">
-                  <div className="h-3 w-3 rounded-full bg-white"></div>
-                  <Small className="font-normal">Available</Small>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="h-3 w-3 rounded-full bg-red-500"></div>
-                  <Small className="font-normal">Reserved</Small>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="h-3 w-3 rounded-full bg-accent"></div>
-                  <Small className="font-normal">Selected</Small>
-                </div>
-              </div>
-            </div>
+            <ReservationLegend className="mt-14" />
           </>
         )}
       </section>
-      <AlertDialog open={showAlert} onOpenChange={() => setShowAlert(false)}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle className="mb-5">
-              Sign in with a provider
-            </AlertDialogTitle>
-            <AlertDialogDescription asChild>
-              <div className="flex flex-col gap-4">Hello</div>
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter className="mt-4">
-            <AlertDialogCancel className="border-none bg-red-500 text-white outline-none focus:outline-none hover:bg-red-600">
-              Cancel
-            </AlertDialogCancel>
-            <AlertDialogAction className="rounded-full border-none bg-primary text-white outline-none focus:outline-none hover:bg-primary">
-              Buy Tickets
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+      {data && data.show && selectedTickets && showAlert && (
+        <PaymentAlert
+          show={data && data.show}
+          tickets={selectedTickets}
+          showAlert={showAlert}
+          onSuccess={onAlertSuccess}
+          onCancel={onAlertCancel}
+        />
+      )}
     </>
   );
 };

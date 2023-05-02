@@ -5,12 +5,13 @@ import { SvgHandler } from "~/components/ui";
 import { cn } from "~/lib/utils";
 import { type RouterOutputs } from "~/utils/api";
 
-export interface IHeading extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface IRadioShowCard
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   keyInput: string;
   show: RouterOutputs["shows"]["getAllByMovieId"]["shows"][number];
 }
 
-const RadioShowCard = React.forwardRef<HTMLInputElement, IHeading>(
+const RadioShowCard = React.forwardRef<HTMLInputElement, IRadioShowCard>(
   ({ id, value, required, className, keyInput, show, ...props }, ref) => {
     const { register } = useFormContext();
     return (
