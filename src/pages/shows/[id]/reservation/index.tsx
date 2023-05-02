@@ -18,6 +18,7 @@ import {
   AlertDialogTitle,
   Button,
   Screen,
+  Skeleton,
 } from "~/components/ui";
 import { api } from "~/utils/api";
 import { handleTRPCErrors } from "~/utils/errors";
@@ -59,7 +60,6 @@ const ReservationPage: NextPageWithLayout = ({}) => {
   }, [data]);
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("change", event.target.value);
     const ticketId = event.target.value;
     const ticketSelected = event.target.checked;
 
@@ -105,7 +105,17 @@ const ReservationPage: NextPageWithLayout = ({}) => {
           <Screen />
         </div>
         {isLoading ? (
-          <>Loading</>
+          <>
+            <div className="mx-auto flex max-w-3xl flex-col items-center">
+              <Skeleton className="mb-14 mt-14 h-48 w-full bg-secondaryBg" />
+              <Skeleton className="mb-14 h-12 w-80 bg-secondaryBg" />
+              <div className="flex gap-3">
+                <Skeleton className="h-8 w-32 bg-secondaryBg" />
+                <Skeleton className="h-8 w-32 bg-secondaryBg" />
+                <Skeleton className="h-8 w-32 bg-secondaryBg" />
+              </div>
+            </div>
+          </>
         ) : (
           <>
             <FormProvider {...methods}>
