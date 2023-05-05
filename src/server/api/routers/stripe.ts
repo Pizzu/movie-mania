@@ -18,8 +18,7 @@ export const stripeRouter = createTRPCRouter({
     )
     .mutation(async ({ ctx, input }) => {
       const { session, prisma, stripe, req } = ctx;
-      const { showTitle, showImage, showId, showPrice, tickets } =
-        input;
+      const { showTitle, showImage, showId, showPrice, tickets } = input;
 
       if (!tickets || tickets.length === 0)
         throw new TRPCError({
@@ -42,8 +41,8 @@ export const stripeRouter = createTRPCRouter({
         });
       const baseUrl =
         env.NODE_ENV === "development"
-          ? `http://${req.headers.host ?? "localhost:3000"}`
-          : `https://${req.headers.host ?? "env.NEXTAUTH_URL"}`;
+          ? `http://${req?.headers.host ?? "localhost:3000"}`
+          : `https://${req?.headers.host ?? "env.NEXTAUTH_URL"}`;
 
       const ticketItems = tickets.map(
         (ticket): Stripe.Checkout.SessionCreateParams.LineItem => ({

@@ -7,6 +7,7 @@ import { SidebarLayout } from "~/components/layout";
 import { MovieHero, ShowSelectionForm } from "~/components/ui";
 import { appRouter } from "~/server/api/root";
 import { prisma } from "~/server/db";
+import { stripe } from "~/server/lib/stripe";
 import { api } from "~/utils/api";
 import { handleTRPCErrors } from "~/utils/errors";
 import { type NextPageWithLayout } from "../_app";
@@ -61,7 +62,7 @@ SingleMoviePage.additionalInfo = {
 export const getStaticProps: GetStaticProps = async (context) => {
   const ssg = createProxySSGHelpers({
     router: appRouter,
-    ctx: { prisma, session: null },
+    ctx: { prisma, session: null, stripe, req: null, res: null },
     transformer: superjson,
   });
 
