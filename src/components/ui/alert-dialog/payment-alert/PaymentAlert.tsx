@@ -1,5 +1,6 @@
 import { type Ticket } from "@prisma/client";
 import dayjs from "dayjs";
+import { useRouter } from "next/router";
 import { useMemo, type MouseEventHandler } from "react";
 import { Medium } from "~/components/typography";
 import {
@@ -11,16 +12,18 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
+  Spinner,
   SvgHandler,
 } from "~/components/ui";
-import { type RouterOutputs } from "~/utils/api";
+import { api, type RouterOutputs } from "~/utils/api";
+import { handleTRPCErrors } from "~/utils/errors";
 
 interface IPaymentAlert {
   show: RouterOutputs["shows"]["getOneById"]["show"];
   tickets: Ticket[];
   showAlert: boolean;
-  onSuccess: MouseEventHandler<HTMLButtonElement> | undefined;
-  onCancel: MouseEventHandler<HTMLButtonElement> | undefined;
+  onSuccess: () => void;
+  onCancel: MouseEventHandler<HTMLButtonElement>;
 }
 
 const PaymentAlert = ({
@@ -30,6 +33,8 @@ const PaymentAlert = ({
   onSuccess,
   onCancel,
 }: IPaymentAlert) => {
+  const router = useRouter();
+
   const totalToPay = useMemo(() => {
     return Number(show.showPrice) * tickets.length;
   }, [tickets, show]);
@@ -44,6 +49,39 @@ const PaymentAlert = ({
       }
     }, "");
   }, [tickets]);
+
+  const { mutate, isLoading } = api.stripe.checkout.useMutation({
+    onSuccess: ({ checkoutUrl }) => {
+      onSuccess();
+      if (checkoutUrl) {
+        void router.push(checkoutUrl);
+      }
+    },
+    onError: (error) => {
+      handleTRPCErrors({
+        message: error.data?.stack,
+        code: error.data?.code,
+      });
+    },
+  });
+
+  const onCheckout = () => {
+    const payloadTickets = tickets.map((ticket) => ({
+      id: ticket.id,
+      seatNumber: ticket.seatNumber,
+    }));
+
+    const payload = {
+      showTitle: show.movie.title,
+      showImage: show.movie.mainImage,
+      showId: show.id,
+      showPrice: Number(show.showPrice),
+      tickets: payloadTickets,
+    };
+
+    console.log(payload);
+    mutate(payload);
+  };
 
   return (
     <AlertDialog open={showAlert}>
@@ -96,10 +134,11 @@ const PaymentAlert = ({
             Cancel
           </AlertDialogCancel>
           <AlertDialogAction
-            onClick={onSuccess}
-            className="rounded-full border-none bg-primary text-white outline-none focus:outline-none hover:bg-primary"
+            onClick={onCheckout}
+            disabled={isLoading}
+            className="rounded-full border-none bg-primary text-white outline-none focus:outline-none disabled:opacity-80 hover:bg-primary"
           >
-            Buy Tickets
+            {isLoading ? <Spinner /> : "Buy Tickets"}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

@@ -32,7 +32,7 @@ export const showsRouter = createTRPCRouter({
       const show = await ctx.prisma.show
         .findUnique({
           where: { id: showId },
-          include: { tickets: true },
+          include: { tickets: true, movie: true },
         })
         .catch(() => {
           throw new TRPCError({
