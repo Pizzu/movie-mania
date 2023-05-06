@@ -121,6 +121,8 @@ model ShowOrder {
     totalCost Int
     userId    String
     showId    String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
     show      Show     @relation(fields: [showId], references: [id])
     user      User     @relation(fields: [userId], references: [id])
     tickets   Ticket[]

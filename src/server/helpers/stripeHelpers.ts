@@ -67,3 +67,42 @@ export const getOrCreateStripeCustomer = async ({
 
   return null;
 };
+
+export const handleCheckoutSessionCompleted = async ({
+  event,
+  prisma,
+}: {
+  event: Stripe.Event;
+  prisma: PrismaClient;
+}) => {
+  const checkoutSession = event.data.object as Stripe.Checkout.Session;
+  // Create a new show order
+  if (!checkoutSession.metadata)
+    throw new Error("Unable to process event metadata");
+
+  if (!checkoutSession.amount_total)
+    throw new Error("Unable to process total amount");
+
+  const totalCost = checkoutSession.amount_total / 100;
+  const showId = checkoutSession.metadata.showId;
+  const userId = checkoutSession.metadata.userId;
+  const ticketReferenceIds = checkoutSession.metadata.ticketReferenceIds;
+
+  if (totalCost && showId && userId && ticketReferenceIds) {
+    const showOrder = await prisma.showOrder.create({
+      data: { totalCost, showId, userId },
+    });
+
+    // Update purchased tickets availability and showOrderId
+    const ticketIds = ticketReferenceIds.split(",");
+
+    for (const ticket of ticketIds) {
+      await prisma.ticket.update({
+        where: { id: ticket },
+        data: { isAvailable: false, showOrderId: showOrder.id },
+      });
+    }
+  } else {
+    throw new Error("Unable to process data");
+  }
+};
