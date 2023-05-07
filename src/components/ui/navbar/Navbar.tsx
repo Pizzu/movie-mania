@@ -10,13 +10,11 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-  Avatar,
   Button,
+  NavbarMenu,
   Spinner,
   SvgHandler,
 } from "~/components/ui";
-import { api } from "~/utils/api";
-import { handleTRPCErrors } from "~/utils/errors";
 
 interface INavbar {
   title?: string;
@@ -26,23 +24,6 @@ interface INavbar {
 const Navbar: React.FC<INavbar> = ({ title, backBtn = false }) => {
   const { data: sessionData, status } = useSession();
   const router = useRouter();
-  const { isLoading, mutate } = api.stripe.portal.useMutation({
-    onSuccess: ({ billingPortalUrl }) => {
-      if (billingPortalUrl) {
-        void router.push(billingPortalUrl);
-      }
-    },
-    onError: (error) => {
-      handleTRPCErrors({
-        message: error.data?.stack,
-        code: error.data?.code,
-      });
-    },
-  });
-
-  const openClientPortal = () => {
-    mutate();
-  };
 
   return (
     <div className="relative z-50 mx-auto w-full max-w-screen-2xl pl-12 pr-12">
@@ -68,9 +49,7 @@ const Navbar: React.FC<INavbar> = ({ title, backBtn = false }) => {
         {status === "loading" ? (
           <Spinner />
         ) : status === "authenticated" ? (
-          <div className="cursor-pointer" onClick={openClientPortal}>
-            <Avatar profileImg={sessionData.user.image as string} />
-          </div>
+          <NavbarMenu userAvatar={sessionData.user.image as string} />
         ) : (
           <AlertDialog>
             <AlertDialogTrigger asChild>

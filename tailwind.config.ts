@@ -30,6 +30,7 @@ export default {
         secondaryBg: "#231F37",
         discord: "#5865F2",
         accent: "#34DCBF",
+        popover: "#231F37",
       },
     },
   },
