@@ -78,8 +78,7 @@ const PaymentAlert = ({
       showPrice: Number(show.showPrice),
       tickets: payloadTickets,
     };
-
-    console.log(payload);
+    
     mutate(payload);
   };
 

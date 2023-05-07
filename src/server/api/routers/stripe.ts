@@ -39,6 +39,7 @@ export const stripeRouter = createTRPCRouter({
           code: "INTERNAL_SERVER_ERROR",
           message: "Customer not found",
         });
+
       const baseUrl =
         env.NODE_ENV === "development"
           ? `http://${req?.headers.host ?? "localhost:3000"}`
@@ -96,4 +97,39 @@ export const stripeRouter = createTRPCRouter({
       // return checkout session url
       return { checkoutUrl: checkoutSession.url };
     }),
+  portal: protectedProcedure.mutation(async ({ ctx }) => {
+    const { session, prisma, stripe, req } = ctx;
+
+    const userId = session.user.id;
+    const customerId = await getOrCreateStripeCustomer({
+      stripe,
+      prisma,
+      userId,
+    });
+
+    if (!customerId)
+      throw new TRPCError({
+        code: "INTERNAL_SERVER_ERROR",
+        message: "Customer not found",
+      });
+
+    const baseUrl =
+      env.NODE_ENV === "development"
+        ? `http://${req?.headers.host ?? "localhost:3000"}`
+        : `https://${req?.headers.host ?? "env.NEXTAUTH_URL"}`;
+
+    const stripeBillingPortalSession =
+      await stripe.billingPortal.sessions.create({
+        customer: customerId,
+        return_url: `${baseUrl}/`,
+      });
+
+    if (!stripeBillingPortalSession)
+      throw new TRPCError({
+        code: "INTERNAL_SERVER_ERROR",
+        message: "Something went wrong creating portal",
+      });
+
+    return { billingPortalUrl: stripeBillingPortalSession.url };
+  }),
 });
