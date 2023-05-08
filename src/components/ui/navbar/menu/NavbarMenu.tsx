@@ -48,7 +48,7 @@ const NavbarMenu = ({ userAvatar }: INavbarMenu) => {
           <DropdownMenuItem>
             <User className="mr-2 h-4 w-4" />
             <span>Profile</span>
-            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+            <DropdownMenuShortcut>⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem onClick={openClientPortal}>
             <CreditCard className="mr-2 h-4 w-4" />
@@ -58,7 +58,7 @@ const NavbarMenu = ({ userAvatar }: INavbarMenu) => {
           <DropdownMenuItem>
             <Receipt className="mr-2 h-4 w-4" />
             <span>Receipts</span>
-            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+            <DropdownMenuShortcut>⌘R</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>

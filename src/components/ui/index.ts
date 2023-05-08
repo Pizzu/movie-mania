@@ -42,3 +42,4 @@ export { default as SidebarLink } from "./sidebar/link/SidebarLink";
 export { default as Skeleton } from "./skeleton/Skeleton";
 export { default as Spinner } from "./spinner/Spinner";
 export { default as SvgHandler } from "./svg/SvgHandler";
+export { default as TicketCard } from "./ticket/card/TicketCard";

@@ -13,3 +13,9 @@
     @apply scrollbar-thin scrollbar-track-primaryBg scrollbar-thumb-secondaryBg;
   }
 }
+
+@layer components {
+  .barcode svg {
+    @apply h-auto w-full;
+  }
+}
