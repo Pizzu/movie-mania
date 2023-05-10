@@ -1,8 +1,12 @@
 import Head from "next/head";
 import { SidebarLayout } from "~/components/layout";
-import { TicketCard } from "~/components/ui";
+import { TicketList } from "~/components/ui";
+import { api } from "~/utils/api";
 import { type NextPageWithLayout } from "../_app";
+
 const Home: NextPageWithLayout = () => {
+  const { isLoading, data } = api.orders.getAllByCurrentUser.useQuery();
+  console.log(data);
   return (
     <>
       <Head>
@@ -11,9 +15,7 @@ const Home: NextPageWithLayout = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section>
-        <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 md:grid-cols-4">
-          <TicketCard />
-        </div>
+        <TicketList isLoading={isLoading} data={data} />
       </section>
     </>
   );
@@ -27,5 +29,5 @@ Home.additionalInfo = {
       {page}
     </SidebarLayout>
   ),
-  requiresAuth: false,
+  requiresAuth: true,
 };

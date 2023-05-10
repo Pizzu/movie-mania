@@ -1,5 +1,6 @@
 import { createTRPCRouter } from "~/server/api/trpc";
 import { moviesRouter } from "./routers/movies";
+import { ordersRouter } from "./routers/orders";
 import { showsRouter } from "./routers/shows";
 import { stripeRouter } from "./routers/stripe";
 
@@ -12,6 +13,7 @@ export const appRouter = createTRPCRouter({
   movies: moviesRouter,
   shows: showsRouter,
   stripe: stripeRouter,
+  orders: ordersRouter,
 });
 
 // export type definition of API
