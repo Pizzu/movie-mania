@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import React from "react";
 import { useFormContext } from "react-hook-form";
 import { Heading, Medium, Small } from "~/components/typography";
@@ -14,6 +15,8 @@ export interface IRadioShowCard
 const RadioShowCard = React.forwardRef<HTMLInputElement, IRadioShowCard>(
   ({ id, value, required, className, keyInput, show, ...props }, ref) => {
     const { register } = useFormContext();
+    const showDateFormatted = dayjs(show.showTime).format("MMMM D YYYY");
+    const showTimeFormatted = dayjs(show.showTime).format("h a");
     return (
       <div ref={ref}>
         <input
@@ -45,9 +48,9 @@ const RadioShowCard = React.forwardRef<HTMLInputElement, IRadioShowCard>(
                 isHighlighted={true}
               />
               <div className="flex items-center gap-2">
-                <Small>April 28 2022</Small>
+                <Small>{showDateFormatted}</Small>
                 <span className="text-white">·</span>
-                <Small>6 p.m.</Small>
+                <Small>{showTimeFormatted}</Small>
               </div>
             </div>
             <div className="flex items-center justify-center gap-3">
