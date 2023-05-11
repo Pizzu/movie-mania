@@ -12,8 +12,8 @@ const headingVariants = cva("tracking-tight text-white font-bold", {
     variant: {
       h1: "text-4xl lg:text-5xl",
       h2: "text-3xl",
-      h3: "text-2xl",
-      h4: "text-xl",
+      h3: "text-2xl dark:text-red-500",
+      h4: "text-xl dark:text-red-500",
     },
   },
   defaultVariants: {

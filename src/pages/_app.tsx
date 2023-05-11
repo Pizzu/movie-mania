@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
+import { ThemeProvider } from "next-themes";
 import type { AppProps } from "next/app";
 import type { ReactElement, ReactNode } from "react";
 import { Toaster } from "react-hot-toast";
@@ -28,21 +29,23 @@ const MyApp = ({
   const requiresAuth = Component.additionalInfo?.requiresAuth ? true : false;
   return (
     <SessionProvider session={session}>
-      <Toaster
-        toastOptions={{
-          style: {
-            borderRadius: "0.5rem",
-            background: "#231F37",
-            color: "#fff",
-          },
-        }}
-        position="top-center"
-      />
-      {requiresAuth === true ? (
-        <Auth>{getLayout(<Component {...pageProps} />)}</Auth>
-      ) : (
-        getLayout(<Component {...pageProps} />)
-      )}
+      <ThemeProvider>
+        <Toaster
+          toastOptions={{
+            style: {
+              borderRadius: "0.5rem",
+              background: "#231F37",
+              color: "#fff",
+            },
+          }}
+          position="top-center"
+        />
+        {requiresAuth === true ? (
+          <Auth>{getLayout(<Component {...pageProps} />)}</Auth>
+        ) : (
+          getLayout(<Component {...pageProps} />)
+        )}
+      </ThemeProvider>
     </SessionProvider>
   );
 };

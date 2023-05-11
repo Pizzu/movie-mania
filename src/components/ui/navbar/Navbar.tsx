@@ -1,4 +1,5 @@
 import { signIn, useSession } from "next-auth/react";
+import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
 import { Heading } from "~/components/typography";
 import {
@@ -23,6 +24,7 @@ interface INavbar {
 
 const Navbar: React.FC<INavbar> = ({ title, backBtn = false }) => {
   const { data: sessionData, status } = useSession();
+  const { resolvedTheme, setTheme } = useTheme();
   const router = useRouter();
 
   return (
@@ -32,6 +34,13 @@ const Navbar: React.FC<INavbar> = ({ title, backBtn = false }) => {
           title || backBtn ? "justify-between" : "justify-end"
         } py-10`}
       >
+        <Button
+          onClick={() => {
+            setTheme(resolvedTheme === "light" ? "dark" : "light");
+          }}
+        >
+          Theme
+        </Button>
         {backBtn && (
           <Button
             onClick={() => router.back()}
