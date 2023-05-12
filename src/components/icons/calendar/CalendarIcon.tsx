@@ -12,7 +12,7 @@ const CalendarIcon: React.FC<ISvgIcon> = ({
         width={`${width}rem`}
         height={`${height}rem`}
         className={`${
-          isHighlighted ? "fill-white" : "fill-secondary"
+          isHighlighted ? "fill-lightBlack dark:fill-white" : "fill-secondary"
         } transition-all`}
         viewBox="0 0 18 20"
         fill="none"

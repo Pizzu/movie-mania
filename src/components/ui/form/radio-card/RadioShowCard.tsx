@@ -31,7 +31,7 @@ const RadioShowCard = React.forwardRef<HTMLInputElement, IRadioShowCard>(
         <label
           htmlFor={id}
           className={cn(
-            "inline-flex h-full w-full cursor-pointer items-center justify-center rounded-lg border-2 border-white bg-secondaryBg p-5 text-center transition-all peer-checked:border-primary peer-checked:bg-primary hover:border-primary",
+            "inline-flex h-full w-full cursor-pointer items-center justify-center rounded-lg border-2 border-lightBlack bg-secondaryLightBg p-5 text-center transition-all peer-checked:border-primary peer-checked:bg-primary hover:border-primary dark:border-white dark:bg-secondaryBg dark:peer-checked:border-primary dark:peer-checked:bg-primary dark:hover:border-primary",
             className
           )}
         >
@@ -49,7 +49,7 @@ const RadioShowCard = React.forwardRef<HTMLInputElement, IRadioShowCard>(
               />
               <div className="flex items-center gap-2">
                 <Small>{showDateFormatted}</Small>
-                <span className="text-white">·</span>
+                <span className=" text-lightBlack dark:text-white">·</span>
                 <Small>{showTimeFormatted}</Small>
               </div>
             </div>

@@ -7,7 +7,12 @@ interface IParagraphText {
 
 const Paragraph: React.FC<IParagraphText> = ({ className, children }) => {
   return (
-    <p className={cn("text-lg font-normal text-white", className)}>
+    <p
+      className={cn(
+        "text-lg font-normal text-lightBlack dark:text-white",
+        className
+      )}
+    >
       {children}
     </p>
   );
@@ -19,7 +24,12 @@ const Lead: React.FC<IParagraphText> = ({ className, children }) => {
 
 const Large: React.FC<IParagraphText> = ({ className, children }) => {
   return (
-    <p className={cn("text-lg font-semibold text-slate-900", className)}>
+    <p
+      className={cn(
+        "text-lg font-semibold text-lightBlack dark:text-white",
+        className
+      )}
+    >
       {children}
     </p>
   );
@@ -28,7 +38,10 @@ const Large: React.FC<IParagraphText> = ({ className, children }) => {
 const Medium: React.FC<IParagraphText> = ({ className, children }) => {
   return (
     <p
-      className={cn("text-base font-normal leading-none text-white", className)}
+      className={cn(
+        "text-base font-normal leading-none text-lightBlack dark:text-white",
+        className
+      )}
     >
       {children}
     </p>
@@ -37,7 +50,12 @@ const Medium: React.FC<IParagraphText> = ({ className, children }) => {
 
 const Small: React.FC<IParagraphText> = ({ className, children }) => {
   return (
-    <p className={cn("text-sm font-medium leading-none text-white", className)}>
+    <p
+      className={cn(
+        "text-sm font-medium leading-none text-lightBlack dark:text-white",
+        className
+      )}
+    >
       {children}
     </p>
   );

@@ -25,7 +25,7 @@ const TicketList = ({ data, isLoading, className }: ITicketList) => {
           {loadingList.map((_, index) => (
             <Skeleton
               key={index}
-              className="h-[30rem] w-full rounded-3xl bg-secondaryBg"
+              className="h-[30rem] w-full rounded-3xl bg-secondaryLightBg dark:bg-secondaryBg"
             />
           ))}
         </div>

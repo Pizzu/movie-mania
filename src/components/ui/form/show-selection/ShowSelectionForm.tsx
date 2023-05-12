@@ -37,7 +37,7 @@ const ShowSelectionForm = ({ movie }: IShowSlectionForm) => {
       {isLoading || status === "loading" ? (
         <>
           <div className="mb-8 flex flex-col items-center">
-            <Skeleton className="h-4 w-40 bg-secondaryBg" />
+            <Skeleton className="h-4 w-40 bg-secondaryLightBg dark:bg-secondaryBg" />
           </div>
           <div className="mb-14 grid w-full grid-cols-1 gap-7 sm:grid-cols-2 md:grid-cols-3">
             {Array(3)
@@ -45,13 +45,13 @@ const ShowSelectionForm = ({ movie }: IShowSlectionForm) => {
               .map((_, index) => {
                 return (
                   <Skeleton
-                    className="h-40 w-full bg-secondaryBg"
+                    className="h-40 w-full bg-secondaryLightBg dark:bg-secondaryBg"
                     key={index}
                   />
                 );
               })}
           </div>
-          <Skeleton className="mx-auto h-12 w-80 rounded-full bg-secondaryBg" />
+          <Skeleton className="mx-auto h-12 w-80 rounded-full bg-secondaryLightBg dark:bg-secondaryBg" />
         </>
       ) : showAvailable ? (
         <>

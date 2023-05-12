@@ -7,7 +7,7 @@ const ReservationLegend = ({ className, ...props }: ICheckBoxSeat) => {
     <div className={cn("mt-14 flex justify-center", className)} {...props}>
       <div className="flex gap-5">
         <div className="flex items-center gap-2">
-          <div className="h-3 w-3 rounded-full bg-white"></div>
+          <div className="h-3 w-3 rounded-full bg-lightBlack dark:bg-white"></div>
           <Small className="font-normal">Available</Small>
         </div>
         <div className="flex items-center gap-2">

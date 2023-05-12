@@ -25,7 +25,7 @@ const MovieList = ({ data, isLoading, className }: IMovieList) => {
           {loadingList.map((_, index) => (
             <Skeleton
               key={index}
-              className="h-80 w-full rounded-3xl bg-secondaryBg"
+              className="h-72 w-full rounded-3xl bg-secondaryLightBg dark:bg-secondaryBg"
             />
           ))}
         </div>

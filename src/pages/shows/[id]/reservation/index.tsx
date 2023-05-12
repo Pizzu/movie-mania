@@ -110,12 +110,12 @@ const ReservationPage: NextPageWithLayout = ({}) => {
         {isLoading || !data ? (
           <>
             <div className="mx-auto flex max-w-3xl flex-col items-center">
-              <Skeleton className="mb-14 mt-14 h-48 w-full bg-secondaryBg" />
-              <Skeleton className="mb-14 h-12 w-80 bg-secondaryBg" />
+              <Skeleton className="mb-14 mt-14 h-48 w-full bg-secondaryLightBg dark:bg-secondaryBg" />
+              <Skeleton className="mb-14 h-12 w-80 bg-secondaryLightBg dark:bg-secondaryBg" />
               <div className="flex gap-3">
-                <Skeleton className="h-8 w-32 bg-secondaryBg" />
-                <Skeleton className="h-8 w-32 bg-secondaryBg" />
-                <Skeleton className="h-8 w-32 bg-secondaryBg" />
+                <Skeleton className="h-8 w-32 bg-secondaryLightBg dark:bg-secondaryBg" />
+                <Skeleton className="h-8 w-32 bg-secondaryLightBg dark:bg-secondaryBg" />
+                <Skeleton className="h-8 w-32 bg-secondaryLightBg dark:bg-secondaryBg" />
               </div>
             </div>
           </>
