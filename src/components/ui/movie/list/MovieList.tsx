@@ -18,7 +18,7 @@ const MovieList = ({ data, isLoading, className }: IMovieList) => {
       {isLoading ? (
         <div
           className={cn(
-            "grid grid-cols-1 gap-7 sm:grid-cols-2 md:grid-cols-4",
+            "grid grid-cols-1 gap-7 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4",
             className
           )}
         >
@@ -32,7 +32,7 @@ const MovieList = ({ data, isLoading, className }: IMovieList) => {
       ) : data && data.movies.length > 0 ? (
         <div
           className={cn(
-            "grid grid-cols-1 gap-7 sm:grid-cols-2 md:grid-cols-4",
+            "grid grid-cols-1 gap-7 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4",
             className
           )}
         >

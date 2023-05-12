@@ -28,7 +28,9 @@ const MovieHero = ({ movie, isLoading }: IMovieHero) => {
             <Heading tag="h1" variant={"h1"}>
               {movie.title}
             </Heading>
-            <Paragraph className="max-w-4xl">{movie.plot}</Paragraph>
+            <Paragraph className="max-w-4xl pl-6 pr-6 lg:pl-12 lg:pr-12">
+              {movie.plot}
+            </Paragraph>
           </div>
         </>
       ) : null}

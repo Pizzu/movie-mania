@@ -9,6 +9,7 @@ import {
   Ticket,
   User,
 } from "lucide-react";
+import Link from "next/link";
 import router from "next/router";
 import {
   Avatar,
@@ -55,31 +56,41 @@ const NavbarMenu = ({ userAvatar }: INavbarMenu) => {
         <div className="block lg:hidden">
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuGroup>
-            <DropdownMenuItem>
-              <Home className="mr-2 h-4 w-4" />
-              <span>Home</span>
-              <DropdownMenuShortcut>⌘H</DropdownMenuShortcut>
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={openClientPortal}>
-              <PlayCircle className="mr-2 h-4 w-4" />
-              <span>Now Playing</span>
-              <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <CalendarHeart className="mr-2 h-4 w-4" />
-              <span>Upcoming</span>
-              <DropdownMenuShortcut>⌘U</DropdownMenuShortcut>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Star className="mr-2 h-4 w-4" />
-              <span>Top Movies</span>
-              <DropdownMenuShortcut>⌘T</DropdownMenuShortcut>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Ticket className="mr-2 h-4 w-4" />
-              <span>My Tickets</span>
-              <DropdownMenuShortcut>⌘R</DropdownMenuShortcut>
-            </DropdownMenuItem>
+            <Link href={"/"} passHref>
+              <DropdownMenuItem>
+                <Home className="mr-2 h-4 w-4" />
+                <span>Home</span>
+                <DropdownMenuShortcut>⌘H</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </Link>
+            <Link href={"/movies/now-playing"} passHref>
+              <DropdownMenuItem onClick={openClientPortal}>
+                <PlayCircle className="mr-2 h-4 w-4" />
+                <span>Now Playing</span>
+                <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </Link>
+            <Link href={"/movies/upcoming"} passHref>
+              <DropdownMenuItem>
+                <CalendarHeart className="mr-2 h-4 w-4" />
+                <span>Upcoming</span>
+                <DropdownMenuShortcut>⌘U</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </Link>
+            <Link href={"/movies/top-movies"} passHref>
+              <DropdownMenuItem>
+                <Star className="mr-2 h-4 w-4" />
+                <span>Top Movies</span>
+                <DropdownMenuShortcut>⌘T</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </Link>
+            <Link href={"/tickets"} passHref>
+              <DropdownMenuItem>
+                <Ticket className="mr-2 h-4 w-4" />
+                <span>My Tickets</span>
+                <DropdownMenuShortcut>⌘R</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </Link>
           </DropdownMenuGroup>
         </div>
 

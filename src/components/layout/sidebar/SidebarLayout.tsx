@@ -15,7 +15,7 @@ const SidebarLayout: React.FC<ISidebarLayout> = ({
     <>
       <Sidebar />
       <div className="flex justify-start">
-        <div className="hidden h-0 shrink-0 grow-0 basis-80 md:block"></div>
+        <div className="hidden h-0 shrink-0 grow-0 basis-80 lg:block"></div>
         <div className="relative flex-1">
           <Navbar title={pageTitle} backBtn={backBtn} />
           <Container>{children}</Container>
