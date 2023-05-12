@@ -12,7 +12,7 @@ const LogoIcon: React.FC<ISvgIcon> = ({
         width={`${width}rem`}
         height={`${height}rem`}
         className={`${
-          isHighlighted ? "stroke-white" : "stroke-secondary"
+          isHighlighted ? "stroke-lightBlack dark:stroke-white" : "stroke-secondary"
         } transition-all`}
         viewBox="0 0 28 26"
         fill="none"

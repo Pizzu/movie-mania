@@ -18,21 +18,21 @@ const TicketList = ({ data, isLoading, className }: ITicketList) => {
       {isLoading ? (
         <div
           className={cn(
-            "grid grid-cols-1 gap-7 sm:grid-cols-2 md:grid-cols-4",
+            "grid grid-cols-1 gap-7 sm:grid-cols-2 xl:grid-cols-4",
             className
           )}
         >
           {loadingList.map((_, index) => (
             <Skeleton
               key={index}
-              className="h-[30rem] w-full rounded-3xl bg-secondaryBg"
+              className="h-[30rem] w-full rounded-3xl bg-secondaryLightBg dark:bg-secondaryBg"
             />
           ))}
         </div>
       ) : data && data.ticketOrders.length > 0 ? (
         <div
           className={cn(
-            "grid grid-cols-1 gap-7 sm:grid-cols-2 md:grid-cols-4",
+            "grid grid-cols-1 gap-7 sm:grid-cols-2 xl:grid-cols-4",
             className
           )}
         >

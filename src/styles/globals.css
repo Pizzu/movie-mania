@@ -5,12 +5,8 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    @apply bg-primaryBg;
-  }
-
   body {
-    @apply scrollbar-thin scrollbar-track-primaryBg scrollbar-thumb-secondaryBg;
+    @apply bg-primaryBg transition-all dark:bg-primaryDarkBg;
   }
 }
 

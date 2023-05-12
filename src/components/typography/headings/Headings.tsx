@@ -7,19 +7,22 @@ export interface IHeading
   tag: "h1" | "h2" | "h3" | "h4";
 }
 
-const headingVariants = cva("tracking-tight text-white font-bold", {
-  variants: {
-    variant: {
-      h1: "text-4xl lg:text-5xl",
-      h2: "text-3xl",
-      h3: "text-2xl",
-      h4: "text-xl",
+const headingVariants = cva(
+  "tracking-tight text-lightBlack dark:text-white font-bold",
+  {
+    variants: {
+      variant: {
+        h1: "text-4xl lg:text-5xl",
+        h2: "text-3xl",
+        h3: "text-2xl",
+        h4: "text-xl",
+      },
     },
-  },
-  defaultVariants: {
-    variant: "h1",
-  },
-});
+    defaultVariants: {
+      variant: "h1",
+    },
+  }
+);
 
 const Heading = React.forwardRef<HTMLHeadingElement, IHeading>(
   ({ tag, className, variant, children, ...props }, ref) => {

@@ -1,5 +1,15 @@
 import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
-import { CreditCard, Receipt, User } from "lucide-react";
+import {
+  CalendarHeart,
+  CreditCard,
+  Home,
+  PlayCircle,
+  Receipt,
+  Star,
+  Ticket,
+  User,
+} from "lucide-react";
+import Link from "next/link";
 import router from "next/router";
 import {
   Avatar,
@@ -43,6 +53,47 @@ const NavbarMenu = ({ userAvatar }: INavbarMenu) => {
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
+        <div className="block lg:hidden">
+          <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <DropdownMenuGroup>
+            <Link href={"/"} passHref>
+              <DropdownMenuItem>
+                <Home className="mr-2 h-4 w-4" />
+                <span>Home</span>
+                <DropdownMenuShortcut>⌘H</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </Link>
+            <Link href={"/movies/now-playing"} passHref>
+              <DropdownMenuItem onClick={openClientPortal}>
+                <PlayCircle className="mr-2 h-4 w-4" />
+                <span>Now Playing</span>
+                <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </Link>
+            <Link href={"/movies/upcoming"} passHref>
+              <DropdownMenuItem>
+                <CalendarHeart className="mr-2 h-4 w-4" />
+                <span>Upcoming</span>
+                <DropdownMenuShortcut>⌘U</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </Link>
+            <Link href={"/movies/top-movies"} passHref>
+              <DropdownMenuItem>
+                <Star className="mr-2 h-4 w-4" />
+                <span>Top Movies</span>
+                <DropdownMenuShortcut>⌘T</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </Link>
+            <Link href={"/tickets"} passHref>
+              <DropdownMenuItem>
+                <Ticket className="mr-2 h-4 w-4" />
+                <span>My Tickets</span>
+                <DropdownMenuShortcut>⌘R</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </Link>
+          </DropdownMenuGroup>
+        </div>
+
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuGroup>
           <DropdownMenuItem>

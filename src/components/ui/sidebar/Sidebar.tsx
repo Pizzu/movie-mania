@@ -5,7 +5,7 @@ const Sidebar: React.FC = () => {
   const { status } = useSession();
 
   return (
-    <div className="fixed left-0 top-0 hidden h-screen w-80 rounded-br-3xl bg-secondaryBg px-8 py-10 sm:hidden md:block">
+    <div className="fixed left-0 top-0 hidden h-screen w-80 rounded-br-3xl bg-secondaryLightBg px-8 py-10 dark:bg-secondaryBg sm:hidden lg:block">
       <div className="flex h-full flex-col">
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-3 pl-8">
@@ -22,7 +22,9 @@ const Sidebar: React.FC = () => {
         </div>
         <div className="mt-11 h-full">
           <div className="flex grow flex-col gap-5">
-            <Small className="px-8 text-secondary">MENU</Small>
+            <Small className="px-8 text-lightBlack dark:text-secondary">
+              MENU
+            </Small>
             <SidebarLink
               href="/"
               title="Home"

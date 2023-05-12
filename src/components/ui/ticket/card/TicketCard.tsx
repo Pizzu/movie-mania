@@ -25,17 +25,17 @@ const TicketCard = ({ ticketOrder }: ITicketCard) => {
   console.log(seatNumbers);
 
   return (
-    <div className="relative h-[30rem] w-full overflow-clip rounded-3xl bg-secondaryBg transition-all">
+    <div className="relative h-[30rem] w-full overflow-clip rounded-3xl bg-secondaryLightBg transition-all dark:bg-secondaryBg">
       <Image
-        className="rounded-3xl border-2 object-cover"
+        className="rounded-3xl border-2 border-lightBlack object-cover dark:border-white"
         src={ticketOrder.show.movie.mainImage}
         alt="Profile image"
         fill={true}
         priority={true}
       />
-      <div className="absolute bottom-0 left-0 flex w-full flex-col gap-4 rounded-3xl border-2 border-t-0 bg-secondaryBg p-8">
-        <div className="absolute left-0 top-0 h-14 w-14 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 bg-primaryBg"></div>
-        <div className="absolute right-0 top-0 h-14 w-14 -translate-y-1/2 translate-x-1/2 rounded-full border-2 bg-primaryBg"></div>
+      <div className="absolute bottom-0 left-0 flex w-full flex-col gap-4 rounded-3xl border-2 border-t-0 border-lightBlack bg-secondaryLightBg p-8 dark:border-white dark:bg-secondaryBg">
+        <div className="absolute left-0 top-0 h-14 w-14 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-lightBlack bg-primaryBg dark:border-white dark:bg-primaryDarkBg"></div>
+        <div className="absolute right-0 top-0 h-14 w-14 -translate-y-1/2 translate-x-1/2 rounded-full border-2 border-lightBlack bg-primaryBg dark:border-white dark:bg-primaryDarkBg"></div>
         <div className="flex justify-between gap-2">
           <Small>
             <span className="text-primary">Date:</span> {showDateFormatted}
@@ -55,7 +55,7 @@ const TicketCard = ({ ticketOrder }: ITicketCard) => {
             background="#231F37"
             lineColor="#ffffff"
             height={100}
-            value="dsdsdsdsdsdsdsdsxxdasdas"
+            value="clhdkygqa0001ml09qblg5p00"
           />
         </div>
       </div>

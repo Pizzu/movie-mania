@@ -44,7 +44,7 @@ const CheckBoxSeat = ({
                   (ticketSelected) => ticketSelected.id === ticket.id
                 )
                 ? "fill-accent"
-                : "fill-white"
+                : "fill-lightBlack dark:fill-white"
               : "fill-red-500"
           }`}
         />

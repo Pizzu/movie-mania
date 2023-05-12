@@ -12,7 +12,7 @@ const SearchIcon: React.FC<ISvgIcon> = ({
         width={`${width}rem`}
         height={`${height}rem`}
         className={`${
-          isHighlighted ? "fill-white" : "fill-secondary"
+          isHighlighted ? "fill-lightBlack dark:fill-white" : "fill-secondary"
         } transition-all`}
         viewBox="0 0 24 25"
         xmlns="http://www.w3.org/2000/svg"
