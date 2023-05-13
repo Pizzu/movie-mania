@@ -17,6 +17,7 @@ const config = {
       "encrypted-tbn2.gstatic.com",
       "encrypted-tbn3.gstatic.com",
       "t3.gstatic.com",
+      "images.ctfassets.net",
     ],
   },
 

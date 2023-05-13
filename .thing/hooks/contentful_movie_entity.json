@@ -1,0 +1,79 @@
+{
+  "metadata": {
+    "tags": []
+  },
+  "sys": {
+    "type": "Entry",
+    "id": "chFfc4sg0z2gsdhizwMli",
+    "space": {
+      "sys": {
+        "type": "Link",
+        "linkType": "Space",
+        "id": "hkwfuakf5yo1"
+      }
+    },
+    "environment": {
+      "sys": {
+        "id": "master",
+        "type": "Link",
+        "linkType": "Environment"
+      }
+    },
+    "contentType": {
+      "sys": {
+        "type": "Link",
+        "linkType": "ContentType",
+        "id": "movie"
+      }
+    },
+    "createdBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "5KZ8DxNFF9u2gNyBzBwKJV"
+      }
+    },
+    "updatedBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "5KZ8DxNFF9u2gNyBzBwKJV"
+      }
+    },
+    "revision": 2,
+    "createdAt": "2023-05-10T16:34:41.918Z",
+    "updatedAt": "2023-05-13T13:10:15.700Z"
+  },
+  "fields": {
+    "title": {
+      "en-US": "Super mario bros"
+    },
+    "slug": {
+      "en-US": "super-mario-bros"
+    },
+    "plot": {
+      "en-US": "Italian-American brothers Mario and Luigi have recently started a plumbing business in Brooklyn, to the derision of their antagonistic ex-employer Spike."
+    },
+    "category": {
+      "en-US": "Now Playing"
+    },
+    "director": {
+      "en-US": "Aaron Horvath"
+    },
+    "duration": {
+      "en-US": 92
+    },
+    "mainImage": {
+      "en-US": {
+        "sys": {
+          "type": "Link",
+          "linkType": "Asset",
+          "id": "6FyoABJMQ6eSjcjYD55Pw"
+        }
+      }
+    },
+    "releaseDate": {
+      "en-US": "2023-04-06T12:00+02:00"
+    }
+  }
+}

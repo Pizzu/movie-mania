@@ -25,6 +25,8 @@ const server = z.object({
   GOOGLE_CLIENT_SECRET: z.string().min(1),
   STRIPE_SECRET_KEY: z.string().min(1),
   STRIPE_WEBHOOK_SECRET_KEY: z.string().min(1),
+  CONTENTFUL_SPACE_ID: z.string().min(1),
+  CONTENTFUL_ACCESS_TOKEN: z.string().min(1),
 });
 
 /**
@@ -55,6 +57,8 @@ const processEnv = {
     process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
   STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
   STRIPE_WEBHOOK_SECRET_KEY: process.env.STRIPE_WEBHOOK_SECRET_KEY,
+  CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
+  CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN,
 };
 
 // Don't touch the part below
