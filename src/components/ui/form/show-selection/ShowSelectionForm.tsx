@@ -16,7 +16,7 @@ const ShowSelectionForm = ({ movie }: IShowSlectionForm) => {
   const methods = useForm<{
     showId: string;
   }>();
-
+  console.log(movie);
   const { data, isLoading } = api.shows.getAllByMovieId.useQuery(
     {
       movieId: movie.id,
@@ -24,7 +24,7 @@ const ShowSelectionForm = ({ movie }: IShowSlectionForm) => {
     { enabled: movie ? true : false }
   );
 
-  const showAvailable = data && data.shows && data.shows.length > 1;
+  const showAvailable = data && data.shows && data.shows.length > 0;
 
   const onSubmit: SubmitHandler<{ showId: string }> = ({ showId }) => {
     if (showId) {
@@ -74,7 +74,7 @@ const ShowSelectionForm = ({ movie }: IShowSlectionForm) => {
                       <RadioShowCard
                         key={show.id}
                         show={show}
-                        id={show.id.toString()}
+                        id={show.id}
                         value={show.id}
                         required={true}
                         keyInput={"showId"}

@@ -1,0 +1,8 @@
+{
+  "url": "http://localhost:3000/api/webhooks/contentful",
+  "headers": {
+    "X-Contentful-Topic": "ContentManagement.Entry.publish",
+    "X-Contentful-Webhook-Name": "Movie-mania-next-js",
+    "Content-Type": "application/json; charset=utf-8"
+  }
+}

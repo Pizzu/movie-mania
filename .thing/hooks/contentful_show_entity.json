@@ -1,0 +1,73 @@
+{
+  "metadata": {
+    "tags": []
+  },
+  "sys": {
+    "type": "Entry",
+    "id": "70mgNexiqRlOGls8nEVGZq",
+    "space": {
+      "sys": {
+        "type": "Link",
+        "linkType": "Space",
+        "id": "hkwfuakf5yo1"
+      }
+    },
+    "environment": {
+      "sys": {
+        "id": "master",
+        "type": "Link",
+        "linkType": "Environment"
+      }
+    },
+    "contentType": {
+      "sys": {
+        "type": "Link",
+        "linkType": "ContentType",
+        "id": "show"
+      }
+    },
+    "createdBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "5KZ8DxNFF9u2gNyBzBwKJV"
+      }
+    },
+    "updatedBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "5KZ8DxNFF9u2gNyBzBwKJV"
+      }
+    },
+    "revision": 1,
+    "createdAt": "2023-05-14T13:28:08.777Z",
+    "updatedAt": "2023-05-14T13:28:08.777Z"
+  },
+  "fields": {
+    "movieId": {
+      "en-US": {
+        "sys": {
+          "type": "Link",
+          "linkType": "Entry",
+          "id": "chFfc4sg0z2gsdhizwMli"
+        }
+      }
+    },
+    "roomId": {
+      "en-US": {
+        "sys": {
+          "type": "Link",
+          "linkType": "Entry",
+          "id": "3X1wXsS50EIXA2K5Y6t51E"
+        }
+      }
+    },
+    "showTime": {
+      "en-US": "2023-05-15T16:00+02:00"
+    },
+    "showPrice": {
+      "en-US": 20
+    }
+  }
+}

@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo } from "react";
 import { Heading, Small } from "~/components/typography";
 import { cn } from "~/lib/utils";
 import { type RouterOutputs } from "~/utils/api";
@@ -10,14 +9,8 @@ interface IMovieCard extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const MovieCard = ({ movie, className }: IMovieCard) => {
-  const titleSlug = useMemo(() => {
-    const lowerCaseMovie = movie.title.trim().toLowerCase();
-    const slug = lowerCaseMovie.replace(/\s+/g, "-");
-    return slug;
-  }, [movie]);
-
   return (
-    <Link href={`/movies/${titleSlug}`} passHref>
+    <Link href={`/movies/${movie.slug}`} passHref>
       <div
         className={cn(
           "relative h-72 w-full cursor-pointer overflow-clip rounded-3xl border-2 border-lightBlack bg-secondaryBg transition-all hover:border-primary dark:border-white dark:hover:border-primary",

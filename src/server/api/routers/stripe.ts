@@ -71,7 +71,6 @@ export const stripeRouter = createTRPCRouter({
         },
         ""
       );
-
       // Use the payload to create a checkout session (total tickets price, tickets to save, show infos and user id)
       const checkoutSession = await stripe.checkout.sessions.create({
         customer: customerId,
@@ -93,6 +92,8 @@ export const stripeRouter = createTRPCRouter({
           code: "INTERNAL_SERVER_ERROR",
           message: "Something went wrong creating checkout",
         });
+
+      console.log("HELLOOO");
 
       // return checkout session url
       return { checkoutUrl: checkoutSession.url };

@@ -28,7 +28,7 @@ export const moviesRouter = createTRPCRouter({
       }
     }),
   getById: publicProcedure
-    .input(z.object({ movieId: z.number().int() }))
+    .input(z.object({ movieId: z.string() }))
     .query(async ({ ctx, input: { movieId } }) => {
       try {
         const movie = await ctx.prisma.movie.findUnique({
@@ -50,12 +50,10 @@ export const moviesRouter = createTRPCRouter({
   getByName: publicProcedure
     .input(z.object({ movieName: z.string() }))
     .query(async ({ ctx, input: { movieName } }) => {
-      const title = movieName.replace(/-/g, " ");
-      const capitalizedTitle = title.charAt(0).toUpperCase() + title.slice(1);
-
+      console.log(movieName);
       const movies = await ctx.prisma.movie
         .findMany({
-          where: { title: capitalizedTitle },
+          where: { slug: movieName },
         })
         .catch(() => {
           throw new TRPCError({

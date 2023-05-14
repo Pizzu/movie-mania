@@ -62,8 +62,9 @@ model VerificationToken {
 }
 
 model Movie {
-    id          Int      @id @default(autoincrement())
+    id          String   @id @default(cuid())
     title       String
+    slug        String
     plot        String
     category    String
     director    String
@@ -86,7 +87,7 @@ model Room {
 
 model Show {
     id        String      @id @default(cuid())
-    movieId   Int
+    movieId   String
     roomId    String
     showTime  DateTime
     showPrice Decimal     @db.Decimal(10, 2)

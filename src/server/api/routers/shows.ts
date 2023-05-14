@@ -12,7 +12,7 @@ export const showsRouter = createTRPCRouter({
     }
   }),
   getAllByMovieId: publicProcedure
-    .input(z.object({ movieId: z.number().int() }))
+    .input(z.object({ movieId: z.string() }))
     .query(async ({ ctx, input: { movieId } }) => {
       try {
         const shows = await ctx.prisma.show.findMany({

@@ -66,3 +66,21 @@ export type MovieContentfulSkeleton = {
     releaseDate: EntryFieldTypes.Date;
   };
 };
+
+export type RoomContentfulSkeleton = {
+  contentTypeId: "room";
+  fields: {
+    name: EntryFieldTypes.Text;
+    capacity: EntryFieldTypes.Number;
+  };
+};
+
+export type ShowContentfulSkeleton = {
+  contentTypeId: "show";
+  fields: {
+    movieId: EntryFieldTypes.EntryLink<MovieContentfulSkeleton>;
+    roomId: EntryFieldTypes.EntryLink<RoomContentfulSkeleton>;
+    showTime: EntryFieldTypes.Date;
+    showPrice: EntryFieldTypes.Number;
+  };
+};
