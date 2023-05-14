@@ -78,7 +78,7 @@ const PaymentAlert = ({
       showPrice: Number(show.showPrice),
       tickets: payloadTickets,
     };
-    
+
     mutate(payload);
   };
 
@@ -128,14 +128,14 @@ const PaymentAlert = ({
         <AlertDialogFooter className="mt-4">
           <AlertDialogCancel
             onClick={onCancel}
-            className="border-none bg-red-500 text-white outline-none focus:outline-none hover:bg-red-600"
+            className="ext-lightBlack border-none bg-red-500 outline-none focus:outline-none hover:bg-red-600 dark:text-white"
           >
             Cancel
           </AlertDialogCancel>
           <AlertDialogAction
             onClick={onCheckout}
             disabled={isLoading}
-            className="rounded-full border-none bg-primary text-white outline-none focus:outline-none disabled:opacity-80 hover:bg-primary"
+            className="rounded-full border-none bg-primary text-lightBlack outline-none focus:outline-none disabled:opacity-80 hover:bg-primary dark:text-white"
           >
             {isLoading ? <Spinner /> : "Buy Tickets"}
           </AlertDialogAction>

@@ -46,7 +46,7 @@ const AlertDialogContent = React.forwardRef<
     <AlertDialogPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed z-50 grid w-full max-w-lg scale-100 gap-4 bg-secondaryBg p-6 opacity-100 animate-in fade-in-90 slide-in-from-bottom-10 sm:rounded-3xl sm:zoom-in-90 sm:slide-in-from-bottom-0 md:w-full",
+        "fixed z-50 grid w-full max-w-lg scale-100 gap-4 bg-secondaryLightBg p-6 opacity-100 animate-in fade-in-90 slide-in-from-bottom-10 dark:bg-secondaryBg sm:rounded-3xl sm:zoom-in-90 sm:slide-in-from-bottom-0 md:w-full",
         "dark:bg-slate-900",
         className
       )}
@@ -91,8 +91,7 @@ const AlertDialogTitle = React.forwardRef<
   <AlertDialogPrimitive.Title
     ref={ref}
     className={cn(
-      "text-lg font-semibold text-white",
-      "dark:text-slate-50",
+      "text-lg font-semibold text-lightBlack dark:text-white",
       className
     )}
     {...props}
@@ -120,7 +119,7 @@ const AlertDialogAction = React.forwardRef<
   <AlertDialogPrimitive.Action
     ref={ref}
     className={cn(
-      "inline-flex h-10 items-center justify-center rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition-colors focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 hover:bg-slate-700",
+      "inline-flex h-10 items-center justify-center rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-lightBlack dark:text-white transition-colors focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 hover:bg-slate-700",
       className
     )}
     {...props}
