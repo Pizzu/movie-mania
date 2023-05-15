@@ -96,17 +96,6 @@ const Navbar: React.FC<INavbar> = ({ title, backBtn = false }) => {
                   <AlertDialogDescription asChild>
                     <div className="flex flex-col gap-4">
                       <Button
-                        className="gap-3 bg-white px-8 py-4 text-black"
-                        onClick={() => void signIn("google")}
-                      >
-                        <SvgHandler
-                          icon={"googleIcon"}
-                          width={"1.5"}
-                          height={"1.5"}
-                        />
-                        Sign in with google
-                      </Button>
-                      <Button
                         className="gap-3 bg-discord px-8 py-4"
                         onClick={() => void signIn("discord")}
                       >
