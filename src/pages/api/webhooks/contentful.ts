@@ -36,7 +36,7 @@ export default async function handler(
               plot: movieToLoad.plot,
               category: movieToLoad.category,
               director: movieToLoad.director,
-              mainImage: `https://${movieToLoad.mainImage as string}`,
+              mainImage: `https:${movieToLoad.mainImage as string}`,
               duration: movieToLoad.duration.toString(),
               releaseDate: new Date(movieToLoad.releaseDate),
             },
