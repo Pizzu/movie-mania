@@ -94,14 +94,20 @@ export const handleCheckoutSessionCompleted = async ({
     });
 
     // Update purchased tickets availability and showOrderId
-    const ticketIds = ticketReferenceIds.split(",");
-
-    for (const ticket of ticketIds) {
-      await prisma.ticket.update({
-        where: { id: ticket },
-        data: { isAvailable: false, showOrderId: showOrder.id },
-      });
-    }
+    const ticketIds = ticketReferenceIds.split(", ");
+    console.log("Ticket ids", ticketIds);
+    await prisma.ticket.updateMany({
+      where: {
+        id: {
+          in: ticketIds,
+        },
+      },
+      data: {
+        isAvailable: false,
+        showOrderId: showOrder.id,
+      },
+    });
+    console.log("Done");
   } else {
     throw new Error("Unable to process data");
   }
