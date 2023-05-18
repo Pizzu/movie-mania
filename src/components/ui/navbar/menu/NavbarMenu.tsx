@@ -64,7 +64,7 @@ const NavbarMenu = ({ userAvatar }: INavbarMenu) => {
               </DropdownMenuItem>
             </Link>
             <Link href={"/movies/now-playing"} passHref>
-              <DropdownMenuItem onClick={openClientPortal}>
+              <DropdownMenuItem>
                 <PlayCircle className="mr-2 h-4 w-4" />
                 <span>Now Playing</span>
                 <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
