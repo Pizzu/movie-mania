@@ -22,3 +22,10 @@ The web app is a movie ticket booking system that allows users to browse and boo
 - Vercel: A serverless hosting platform that provides seamless deployment and scaling of Next.js applications.
 
 The web app follows a serverless architecture, where Next.js handles server-side rendering, and Contentful and Prisma are used for managing and querying movie and ticket data. The app provides a user-friendly interface for browsing, selecting, and booking movie tickets, and ensures data consistency and integrity with the use of a relational database.
+
+## Images
+![homepage](https://github.com/Pizzu/movie-mania/assets/26909188/b933eba1-a5d8-4621-968d-9788d43a29e4)
+![homepage-dark](https://github.com/Pizzu/movie-mania/assets/26909188/e114f53f-4229-4852-96cf-c147186ceae3)
+![movie-detail](https://github.com/Pizzu/movie-mania/assets/26909188/e193aa07-9f53-43e5-9ce4-6658d8e73d23)
+![seats](https://github.com/Pizzu/movie-mania/assets/26909188/e1e8e2c8-4d74-4678-885b-b36965c7adf7)
+![tickets](https://github.com/Pizzu/movie-mania/assets/26909188/3ca9911d-7d2f-4ebd-803a-5577196992c5)
