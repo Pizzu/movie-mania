@@ -11,12 +11,6 @@ generator client {
     provider = "prisma-client-js"
 }
 
-model Example {
-    id        String   @id @default(cuid())
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-}
-
 // Necessary for Next auth
 model Account {
     id                String  @id @default(cuid())
@@ -48,13 +42,15 @@ model Session {
 }
 
 model User {
-    id            String    @id @default(cuid())
-    name          String?
-    email         String?   @unique
-    emailVerified DateTime?
-    image         String?
-    accounts      Account[]
-    sessions      Session[]
+    id               String      @id @default(cuid())
+    name             String?
+    email            String?     @unique
+    emailVerified    DateTime?
+    image            String?
+    stripeCustomerId String?     @unique
+    accounts         Account[]
+    sessions         Session[]
+    ShowOrder        ShowOrder[]
 }
 
 model VerificationToken {
@@ -63,4 +59,75 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+model Movie {
+    id          String   @id @default(cuid())
+    title       String
+    slug        String
+    plot        String
+    category    String
+    director    String
+    duration    String
+    mainImage   String
+    releaseDate DateTime @db.Date
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    Show        Show[]
+}
+
+model Room {
+    id        String   @id @default(cuid())
+    name      String
+    capacity  Int
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    Show      Show[]
+}
+
+model Show {
+    id        String      @id @default(cuid())
+    movieId   String
+    roomId    String
+    showTime  DateTime
+    showPrice Decimal     @db.Decimal(10, 2)
+    createdAt DateTime    @default(now())
+    updatedAt DateTime    @updatedAt
+    movie     Movie       @relation(fields: [movieId], references: [id])
+    room      Room        @relation(fields: [roomId], references: [id])
+    tickets   Ticket[]
+    ShowOrder ShowOrder[]
+
+    @@index([movieId])
+    @@index([roomId])
+}
+
+model Ticket {
+    id          String     @id @default(cuid())
+    showId      String
+    seatNumber  String
+    isAvailable Boolean
+    showOrderId String?
+    createdAt   DateTime   @default(now())
+    updatedAt   DateTime   @updatedAt
+    show        Show       @relation(fields: [showId], references: [id])
+    ShowOrder   ShowOrder? @relation(fields: [showOrderId], references: [id], onDelete: Cascade)
+
+    @@index([showId])
+    @@index([showOrderId])
+}
+
+model ShowOrder {
+    id        String   @id @default(cuid())
+    totalCost Int
+    userId    String
+    showId    String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    show      Show     @relation(fields: [showId], references: [id])
+    user      User     @relation(fields: [userId], references: [id])
+    tickets   Ticket[]
+
+    @@index([userId])
+    @@index([showId])
 }

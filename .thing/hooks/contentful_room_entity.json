@@ -1,0 +1,55 @@
+{
+  "metadata": {
+    "tags": []
+  },
+  "sys": {
+    "type": "Entry",
+    "id": "3X1wXsS50EIXA2K5Y6t51E",
+    "space": {
+      "sys": {
+        "type": "Link",
+        "linkType": "Space",
+        "id": "hkwfuakf5yo1"
+      }
+    },
+    "environment": {
+      "sys": {
+        "id": "master",
+        "type": "Link",
+        "linkType": "Environment"
+      }
+    },
+    "contentType": {
+      "sys": {
+        "type": "Link",
+        "linkType": "ContentType",
+        "id": "room"
+      }
+    },
+    "createdBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "5KZ8DxNFF9u2gNyBzBwKJV"
+      }
+    },
+    "updatedBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "5KZ8DxNFF9u2gNyBzBwKJV"
+      }
+    },
+    "revision": 1,
+    "createdAt": "2023-05-14T12:23:22.527Z",
+    "updatedAt": "2023-05-14T12:23:22.527Z"
+  },
+  "fields": {
+    "name": {
+      "en-US": "Saturn"
+    },
+    "capacity": {
+      "en-US": 16
+    }
+  }
+}
